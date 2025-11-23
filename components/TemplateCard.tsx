@@ -12,7 +12,7 @@ import { TemplateListType } from "@/types/template";
 
 export const TemplateCard = (template: TemplateListType) => {
   return (
-    <Card className="group flex h-full flex-col overflow-hidden bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
+    <Card className="bg-red-3001 group flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
       {/* Template Preview Area */}
       <div
         style={{ backgroundImage: `url("${template.image}")` }}

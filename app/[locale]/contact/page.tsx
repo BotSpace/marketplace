@@ -1,13 +1,14 @@
 "use client";
 
 import {
-  Mail,
   Phone,
   MapPin,
   Send,
   Linkedin,
   Twitter,
   MessageSquare,
+  MessageCircleMore,
+  Instagram,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BlurText } from "@/components/blur-text";
@@ -15,7 +16,7 @@ import { BlurText } from "@/components/blur-text";
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    contact: "",
     subject: "",
     message: "",
   });
@@ -40,9 +41,16 @@ export default function Contact() {
 
     try {
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch("/api/send-message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      console.log(response);
+
       setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", contact: "", subject: "", message: "" });
       setTimeout(() => setSubmitStatus("idle"), 3000);
     } catch (error) {
       setSubmitStatus("error");
@@ -159,23 +167,23 @@ export default function Contact() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {[
               {
-                icon: Mail,
-                title: "Email",
+                icon: MessageCircleMore,
+                title: "Telegram",
                 description: "Savollaringizni yuboring",
-                contact: "support@botmather.uz",
+                contact: "@botmother_support_bot",
                 color: "from-primary/20 to-primary/5",
               },
               {
                 icon: Phone,
                 title: "Telefon",
                 description: "24/7 qo'llab-quvvatlash",
-                contact: "+998 99 123 45 67",
+                contact: "+998 50 713 70 30",
                 color: "from-accent/20 to-accent/5",
               },
               {
                 icon: MapPin,
                 title: "Manzil",
-                description: "Bizning ofis",
+                description: "Tashkent, Qoraqamish 3rd Street, 3A",
                 contact: "Tashkent, Uzbekistan",
                 color: "from-primary/20 to-primary/5",
               },
@@ -263,22 +271,22 @@ export default function Contact() {
                     />
                   </div>
 
-                  {/* Email Field */}
+                  {/* telegram Field */}
                   <div className="space-y-2">
                     <label
-                      htmlFor="email"
+                      htmlFor="telegram"
                       className="text-sm font-semibold text-foreground"
                     >
-                      Email *
+                      Aloqa *
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                      type="text"
+                      id="contact"
+                      name="contact"
+                      value={formData.contact}
                       onChange={handleChange}
                       required
-                      placeholder="sizning@email.uz"
+                      placeholder="Telefon, Telegra, email"
                       className="w-full rounded-lg border border-border bg-muted/30 px-4 py-3 text-foreground placeholder-muted-foreground transition-all focus:border-primary focus:bg-card focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
@@ -357,7 +365,7 @@ export default function Contact() {
       {/* Social Links Section */}
       <section className="scroll-animate px-4 py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-12 space-y-4 text-center">
+          <div className="mb-12 flex-col flex space-y-4 text-center">
             <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
               Bizni kuzatib turing
             </BlurText>
@@ -372,21 +380,21 @@ export default function Contact() {
                 icon: Linkedin,
                 title: "LinkedIn",
                 description: "Kasbiy yangilanishlarni kuzatib turing",
-                link: "https://linkedin.com",
+                link: "https://www.linkedin.com/company/ico-soft",
                 color: "from-blue-500/20 to-blue-500/5",
               },
               {
-                icon: Twitter,
-                title: "Twitter",
+                icon: Instagram,
+                title: "Instagram",
                 description: "Eng so'ngi xabarlarni bilib oling",
-                link: "https://twitter.com",
+                link: "https://www.instagram.com/ico_soft_uz",
                 color: "from-sky-500/20 to-sky-500/5",
               },
               {
                 icon: MessageSquare,
                 title: "Telegram",
                 description: "Biz bilan bevosita bog'lanish",
-                link: "https://telegram.me",
+                link: "https://t.me/ico_soft",
                 color: "from-cyan-500/20 to-cyan-500/5",
               },
             ].map((social, idx) => {
@@ -444,25 +452,80 @@ export default function Contact() {
           <div className="space-y-4">
             {[
               {
-                question: "Javob berish vaqti qancha?",
+                question: "BotMother.uz dan foydalanish qancha turadi?",
                 answer:
-                  "Bizim jamoasi iş kunlari 24 soat ichida javob beradi. Shaxar vaqti 09:00 dan 18:00 gacha.",
+                  "Botning Resurs Iste'moli uchun oylik to'lov. Eng muhimi, bizda faqat ishlatgan resursingiz uchun to'laysiz, keraksiz paketlar yo'q. Dasturchi xizmatlariga nisbatan 90% gacha tejash mumkin.",
               },
               {
-                question: "Qaysi kanallar orqali qo'llab-quvvatlash olaman?",
+                question: `Narxlaringiz qanday aniqlanadi? "Resurs iste'moli" nima degani?`,
                 answer:
-                  "Siz email, telefon, Telegram, chat va LinkedIn orqali bizga murojaat qilishingiz mumkin.",
+                  `"Resurs iste'moli" bu botingiz qancha xabar qabul qilgani, qancha ma'lumot saqlagani va ishlashi uchun qancha server kuchi ishlatganini anglatadi. Bizning narxlashimiz shaffof va adolatli. Sizga maxsus Narx Kalkulyatorimiz orqali oyiga taxminiy xarajatni oldindan hisoblash imkoniyatini beramiz.`,
               },
               {
-                question: "Birinchi savolingiz uchun to'lov kerakmi?",
+                question: `Bepul sinov muddati yoki "Freemium" rejasi bormi?`,
                 answer:
-                  "Yo'q, barcha boshlang'ich savollar bepul. Faqat qo'shimcha xizmati uchun to'lash kerak bo'ladi.",
+                  `Ha. Siz barcha template'larimizni ko'rishingiz, tanlashingiz va cheklangan imkoniyatlar (masalan, oyiga 100 ta xabar) bilan bepul sinov rejimida ishga tushirishingiz mumkin. Bu sizga tizimimizning qanchalik oson va samarali ekanligini sinab ko'rish imkonini beradi.`,
               },
               {
-                question: "Sabotaj yoki texnik muammoni qanday hal qilasiz?",
+                question: "Men kodlashni bilmayman. Bot yarata olamanmi?",
                 answer:
-                  "Premium foydalanuvchilarga prioritet qo'llab-quvvatlash beriladi. Texnik muammo mavjud bo'lsa, darhol hal qilinadi.",
+                  "Albatta! BotMother.uz aynan kodlashni bilmaydigan foydalanuvchilar uchun mo'ljallangan. Bizning Drag and Drop (tortib tushirish) interfeysimiz va tayyor template'larimiz yordamida har qanday odam professional bot yaratishi mumkin.",
               },
+              {
+                question: "Botni yaratish uchun qancha vaqt ketadi?",
+                answer:
+                  "Agar template'lardan foydalansangiz, template'ni tanlash, o'zgartirish va ishga tushirish uchun 10 daqiqadan 1 soatgacha vaqt ketadi. Dasturchiga buyurtma berishdan ko'ra ancha tez!",
+              },
+              {
+                question: "O'zim yaratgan botni keyinchalik qanday o'zgartirishim mumkin?",
+                answer:
+                  "Botingizni o'zgartirish uchun dasturchi kerak emas. Siz istagan vaqtda Constructor interfeysiga kirib, o'zgarishlarni kiritishingiz va darhol ishga tushirishingiz mumkin.",
+              },
+              {
+                question: "Yaratilgan botlar Telegramning barcha xavfsizlik talablariga javob beradimi?",
+                answer:
+                  "Ha, bizning platformamizda yaratilgan barcha botlar Telegramning API'lari orqali ishlaydi va Telegramning xavfsizlik standartlariga to'liq rioya qiladi. Ma'lumotlaringiz xavfsiz serverlarda saqlanadi.",
+              },
+              {
+                question: "Biznesimga mos template topa olmasam nima qilaman?",
+                answer:
+                  "Agar tayyor template'lardan hech biri to'liq mos kelmasa, siz biz bilan aloqaga chiqishingiz mumkin! Biz siz uchun vaqt ajratamiz va bunga haq olmaymi yoki bunday holatlarda siz bizni AI agentimizda foydalanishingiz mumkin bo'ladi",
+              },
+              {
+                question: "Botni tashqi tizimlar (CRM, To'lovlar, Google Sheets) bilan ulash mumkinmi?",
+                answer:
+                  "Ha! BotMother.uz asosiy CRM'lar, shuningdek, mahalliy to'lov tizimlari (Payme, Click) va Google Sheets kabi muhim xizmatlar bilan oson integratsiyalarni qo'llab-quvvatlaydi.",
+              },
+              {
+                question: "Template yaratuvchilar (Dasturchilar) sifatida siz bilan qanday hamkorlik qilishimiz mumkin?",
+                answer:
+                  "Template yaratuvchilar (Dasturchilar) sifatida siz bilan qanday hamkorlik qilishimiz mumkin?",
+              },
+              {
+                question: "Agar botni ishga tushirishda muammo bo'lsa, kimga murojaat qilishim kerak?",
+                answer:
+                  "Bizning platformada qadam-baqadam video qo'llanmalar va to'liq hujjatlar mavjud. Agar muammo hal bo'lmasa, siz bizning tezkor Yordam (Support) jamoamizga murojaat qilishingiz mumkin.",
+              },
+              {
+                question: "Ma'lumotlarim (mijozlarim ma'lumotlari) qayerda saqlanadi?",
+                answer:
+                  "Barcha ma'lumotlar xavfsiz va ishonchli serverlarda saqlanadi. Biz ma'lumotlaringizning xavfsizligini ta'minlash uchun barcha kerakli choralar ko'rilishiga kafolat beramiz.",
+              },
+              // {
+              //   question: "",
+              //   answer:
+              //     "",
+              // },
+              // {
+              //   question: "",
+              //   answer:
+              //     "",
+              // },
+              // {
+              //   question: "",
+              //   answer:
+              //     "",
+              // },
             ].map((faq, idx) => (
               <details
                 key={idx}

@@ -261,15 +261,62 @@ export default function TemplatesPage() {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {templates.data.results.map((template) => {
                   return (
-                    <div
-                      key={template.id}
-                      className="scroll-animate"
-                      style={{
-                        animation: `slideInUp 0.5s ease-out forwards`,
-                      }}
-                    >
-                      <TemplateCardV2 {...template} />
-                    </div>
+                    <>
+                      <div
+                        key={template.id}
+                        className="scroll-animate"
+                        style={{
+                          animation: `slideInUp 0.5s ease-out forwards`,
+                        }}
+                      >
+                        <TemplateCardV2 {...template} />
+                      </div>
+                      <div
+                        key={template.id}
+                        className="scroll-animate"
+                        style={{
+                          animation: `slideInUp 0.5s ease-out forwards`,
+                        }}
+                      >
+                        <TemplateCardV2 {...template} />
+                      </div>
+                      <div
+                        key={template.id}
+                        className="scroll-animate"
+                        style={{
+                          animation: `slideInUp 0.5s ease-out forwards`,
+                        }}
+                      >
+                        <TemplateCardV2 {...template} />
+                      </div>
+                      <div
+                        key={template.id}
+                        className="scroll-animate"
+                        style={{
+                          animation: `slideInUp 0.5s ease-out forwards`,
+                        }}
+                      >
+                        <TemplateCardV2 {...template} />
+                      </div>
+                      <div
+                        key={template.id}
+                        className="scroll-animate"
+                        style={{
+                          animation: `slideInUp 0.5s ease-out forwards`,
+                        }}
+                      >
+                        <TemplateCardV2 {...template} />
+                      </div>
+                      <div
+                        key={template.id}
+                        className="scroll-animate"
+                        style={{
+                          animation: `slideInUp 0.5s ease-out forwards`,
+                        }}
+                      >
+                        <TemplateCardV2 {...template} />
+                      </div>
+                    </>
                   );
                 })}
               </div>

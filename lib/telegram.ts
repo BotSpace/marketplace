@@ -2,8 +2,9 @@
  * Telegram Bot API utility functions
  */
 
-const TELEGRAM_BOT_TOKEN = "7849406124:AAGY3r7gXIVRyoHuNHymGy8DBRpasxRBSuU";
-const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
+import env from "./env"
+
+const TELEGRAM_API_URL = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}`;
 
 export interface SendMessageParams {
   chatId: string | number;
@@ -12,7 +13,7 @@ export interface SendMessageParams {
 }
 
 export interface SendMessageResponse {
-  ok: boolean;
+  ok: boolean
   result?: {
     message_id: number;
     date: number;

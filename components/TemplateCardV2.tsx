@@ -7,9 +7,9 @@ import Link from "next/link";
 export default function TemplateCardV2(template: TemplateListType) {
   return (
     <div className="w-full max-w-md">
-      <div className="hover:shadow-3xl overflow-hidden rounded-2xl bg-slate-900 shadow-2xl transition-shadow duration-300">
+      <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 duration-300">
         {/* Image Section with Discount Badge */}
-        <div className="group relative h-64 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900">
+        <div className="group relative h-64 overflow-hidden">
           <img
             src={template.image || "/placeholder.svg"}
             alt={template.name}
@@ -23,7 +23,7 @@ export default function TemplateCardV2(template: TemplateListType) {
         </div>
 
         {/* Content Section */}
-        <div className="bg-slate-900 p-6">
+        <div className="p-6">
           {/* Title */}
           <h2 className="mb-2 text-2xl font-bold text-white">
             {template.name}
@@ -49,37 +49,34 @@ export default function TemplateCardV2(template: TemplateListType) {
             </div>
           </div>
 
-          {/* Categories */}
-          <div className="mb-6">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">
-              Kategoriyalar
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {template.categories.map((category) => (
-                <span
-                  key={category.id}
-                  className="rounded-full border border-blue-500 bg-slate-800 px-3 py-1.5 text-sm font-medium text-blue-300 transition-colors hover:border-blue-400 hover:bg-slate-700"
-                >
-                  {category.name}
-                </span>
-              ))}
-            </div>
-          </div>
-
           {/* Features */}
           <div className="mb-6">
             <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">
               Xususiyatlar
             </p>
             <ul className="space-y-2">
-              {template.features.map((feature) => (
-                <li
-                  key={feature.id}
-                  className="flex items-start gap-3 text-sm text-slate-300"
-                >
-                  <span>{feature.name}</span>
-                </li>
-              ))}
+              {template.features.length > 3 ? (
+                <>
+                  {template.features.slice(0, 3).map((feature) => (
+                    <li
+                      key={feature.id}
+                      className="flex items-start gap-3 text-sm text-slate-300"
+                    >
+                      <span>{feature.name}</span>
+                    </li>
+                  ))}
+                  <b>...</b>
+                </>
+              ) : (
+                template.features.map((feature) => (
+                  <li
+                    key={feature.id}
+                    className="flex items-start gap-3 text-sm text-slate-300"
+                  >
+                    <span>{feature.name}</span>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
 

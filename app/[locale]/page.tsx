@@ -232,16 +232,16 @@ export default function Home() {
             </div>
             <div className="group cursor-default space-y-2 transition-all duration-300 hover:scale-110 hover:transform">
               <div className="flex items-center justify-center gap-2">
-                <Smartphone className="h-5 w-5 text-accent" />
+                <Smartphone className="h-5 w-5" />
                 <CountingNumber
                   value={15000}
                   suffix="+"
                   duration={2000}
-                  className="text-3xl font-bold text-accent md:text-4xl"
+                  className="text-3xl font-bold md:text-4xl"
                 />
               </div>
               <BlurText
-                className="text-muted-foreground transition-colors group-hover:text-foreground"
+                className="muted-foreground transition-colors group-hover:text-foreground"
                 delay={600}
               >
                 Yaratilgan bot
@@ -271,7 +271,7 @@ export default function Home() {
       {/* Platform Dashboard Showcase */}
       <section className="scroll-animate bg-gradient-to-b from-transparent via-primary/5 to-transparent px-4 py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 space-y-4 text-center">
+          <div className="mb-16 flex flex-col space-y-4 text-center">
             <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
               Kuchli platform
             </BlurText>
@@ -280,22 +280,12 @@ export default function Home() {
             </BlurText>
           </div>
 
-          <div className="group relative">
-            {/* Glowing border effect */}
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary opacity-0 blur transition-opacity duration-500 group-hover:opacity-30"></div>
-
-            {/* Dashboard image */}
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl transition-all duration-500 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
-              <Image
-                src={secondScreenshot}
-                alt="BotMather platform dashboard showing analytics, metrics, and bot management interface"
-                className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-
-              {/* Overlay gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-            </div>
-          </div>
+          <iframe
+            className="relative h-[200px] w-full overflow-hidden rounded-2xl border border-border bg-card shadow-2xl transition-all duration-500 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20"
+            src="https://www.youtube.com/embed/6xJWQRVl9nw?si=7IcWFQX3EGpEX5O0&amp;controls=0"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          ></iframe>
 
           {/* Feature highlights below image */}
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -344,7 +334,8 @@ export default function Home() {
       </section>
 
       {/* Social Proof Section */}
-      <section className="scroll-animate-fade border-b border-border/40 bg-muted/20 px-4 py-16">
+      {/* TODO: Qachonki partfoliomiz bo'lganda bu yerni ozod qilamiz */}
+      {/* <section className="scroll-animate-fade border-b border-border/40 bg-muted/20 px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <p className="mb-8 text-center text-sm font-medium text-muted-foreground">
             BIZGA ISHONGAN KOMPANIYALAR
@@ -372,7 +363,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Main Benefits Section - Enhanced card design with blur loading */}
       <section className="scroll-animate px-4 py-20">

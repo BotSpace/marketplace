@@ -418,7 +418,7 @@ export default function PricingPage() {
               {
                 question: "To'lov usullari qanday?",
                 answer:
-                  "Bank kartasi, PayPal va boshqa xalqaro to'lov tizimlari qo'llab-quvvatlanadi.",
+                  "Payme, Click, Uzum va boshqa xalqaro to'lov tizimlari qo'llab-quvvatlanadi.",
               },
             ].map((faq, idx) => (
               <Card

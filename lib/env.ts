@@ -20,6 +20,7 @@ const envSchema = z.object({
     .string()
     .min(32, "NEXTAUTH_SECRET must be at least 32 characters")
     .optional(),
+  TELEGRAM_BOT_TOKEN: z.string().optional(),
 });
 
 const env = envSchema.parse({
@@ -29,6 +30,7 @@ const env = envSchema.parse({
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   SALES_URL: process.env.SALES_URL,
   MANAGER_URL: process.env.MANAGER_URL,
+  TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
 });
 
 export default env;
