@@ -271,51 +271,6 @@ export default function TemplatesPage() {
                       >
                         <TemplateCardV2 {...template} />
                       </div>
-                      <div
-                        key={template.id}
-                        className="scroll-animate"
-                        style={{
-                          animation: `slideInUp 0.5s ease-out forwards`,
-                        }}
-                      >
-                        <TemplateCardV2 {...template} />
-                      </div>
-                      <div
-                        key={template.id}
-                        className="scroll-animate"
-                        style={{
-                          animation: `slideInUp 0.5s ease-out forwards`,
-                        }}
-                      >
-                        <TemplateCardV2 {...template} />
-                      </div>
-                      <div
-                        key={template.id}
-                        className="scroll-animate"
-                        style={{
-                          animation: `slideInUp 0.5s ease-out forwards`,
-                        }}
-                      >
-                        <TemplateCardV2 {...template} />
-                      </div>
-                      <div
-                        key={template.id}
-                        className="scroll-animate"
-                        style={{
-                          animation: `slideInUp 0.5s ease-out forwards`,
-                        }}
-                      >
-                        <TemplateCardV2 {...template} />
-                      </div>
-                      <div
-                        key={template.id}
-                        className="scroll-animate"
-                        style={{
-                          animation: `slideInUp 0.5s ease-out forwards`,
-                        }}
-                      >
-                        <TemplateCardV2 {...template} />
-                      </div>
                     </>
                   );
                 })}
