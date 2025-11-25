@@ -124,23 +124,23 @@ export default function Contact() {
   return (
     <main className="flex flex-col overflow-hidden">
       {/* Hero Section */}
-      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-4 py-20">
+      <section className="relative flex min-h-[50vh] sm:min-h-[60vh] items-center justify-center overflow-hidden px-4 py-12 sm:py-20">
         {/* Background gradient */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute -top-40 right-0 h-80 w-80 rounded-full bg-primary/10 blur-3xl"></div>
           <div className="absolute -bottom-40 left-0 h-80 w-80 rounded-full bg-accent/10 blur-3xl"></div>
         </div>
 
-        <div className="mx-auto max-w-4xl space-y-8 text-center">
-          <div className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-            <span className="inline-flex items-center gap-2">
-              <MessageSquare className="h-4 w-4" />
+        <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8 text-center px-2">
+          <div className="inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-primary">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2">
+              <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               Biz bilan bog'laning
             </span>
           </div>
 
           <BlurText
-            className="text-balance text-4xl font-bold leading-tight md:text-6xl"
+            className="text-balance text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight px-2"
             delay={100}
             blurAmount={8}
           >
@@ -151,7 +151,7 @@ export default function Contact() {
           </BlurText>
 
           <BlurText
-            className="mx-auto max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground md:text-xl"
+            className="mx-auto max-w-2xl text-balance text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-muted-foreground px-4"
             delay={300}
             blurAmount={6}
           >
@@ -162,9 +162,9 @@ export default function Contact() {
       </section>
 
       {/* Contact Information Cards */}
-      <section className="scroll-animate px-4 py-20">
+      <section className="scroll-animate px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
             {[
               {
                 icon: MessageCircleMore,
@@ -232,13 +232,13 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="scroll-animate bg-muted/20 px-4 py-20">
+      <section className="scroll-animate bg-muted/20 px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-2xl">
-          <div className="mb-12 space-y-4 text-center">
-            <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
+          <div className="mb-8 sm:mb-12 space-y-3 sm:space-y-4 text-center px-2">
+            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
               Xabar yuboring
             </BlurText>
-            <BlurText className="text-lg text-muted-foreground" delay={400}>
+            <BlurText className="text-base sm:text-lg text-muted-foreground px-4" delay={400}>
               Quyidagi formani to'ldiring va biz tezda javob beramiz
             </BlurText>
           </div>
@@ -248,7 +248,7 @@ export default function Contact() {
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary opacity-0 blur transition-opacity duration-500 group-hover:opacity-30"></div>
 
             {/* Form Container */}
-            <div className="relative space-y-6 overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-2xl transition-all duration-500 hover:border-primary/50 md:p-12">
+            <div className="relative space-y-6 overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8 md:p-12 shadow-2xl transition-all duration-500 hover:border-primary/50">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   {/* Name Field */}
@@ -337,10 +337,10 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 w-full sm:w-auto"
                   >
                     {isSubmitting ? "Jo'natilmoqda..." : "Xabar jo'natish"}
-                    <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    <Send className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
                   </button>
 
                   {/* Status Messages */}
@@ -363,18 +363,18 @@ export default function Contact() {
       </section>
 
       {/* Social Links Section */}
-      <section className="scroll-animate px-4 py-20">
+      <section className="scroll-animate px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-12 flex-col flex space-y-4 text-center">
-            <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
+          <div className="mb-8 sm:mb-12 flex-col flex space-y-3 sm:space-y-4 text-center px-2">
+            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
               Bizni kuzatib turing
             </BlurText>
-            <BlurText className="text-lg text-muted-foreground" delay={400}>
+            <BlurText className="text-base sm:text-lg text-muted-foreground px-4" delay={400}>
               Ijtimoiy tarmoqlarimizda so'nggi yangilanishlarni bilib oling
             </BlurText>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-6 md:grid-cols-3">
             {[
               {
                 icon: Linkedin,
@@ -441,15 +441,15 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="scroll-animate bg-muted/20 px-4 py-20">
+      <section className="scroll-animate bg-muted/20 px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-2xl">
-          <div className="mb-12 space-y-4 text-center">
-            <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
+          <div className="mb-8 sm:mb-12 space-y-3 sm:space-y-4 text-center px-2">
+            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
               Tez-tez so'raladigan savollar
             </BlurText>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {[
               {
                 question: "BotMother.uz dan foydalanish qancha turadi?",
@@ -531,11 +531,11 @@ export default function Contact() {
                 key={idx}
                 className="group rounded-lg border border-border/60 bg-gradient-to-br from-card to-card/90 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
               >
-                <summary className="flex cursor-pointer items-center justify-between p-6 font-semibold text-foreground transition-colors hover:text-primary">
-                  <span>{faq.question}</span>
-                  <span className="transition-transform group-open:rotate-180">
+                <summary className="flex cursor-pointer items-center justify-between p-4 sm:p-6 text-sm sm:text-base font-semibold text-foreground transition-colors hover:text-primary">
+                  <span className="pr-4">{faq.question}</span>
+                  <span className="flex-shrink-0 transition-transform group-open:rotate-180">
                     <svg
-                      className="h-5 w-5"
+                      className="h-4 w-4 sm:h-5 sm:w-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -549,7 +549,7 @@ export default function Contact() {
                     </svg>
                   </span>
                 </summary>
-                <div className="border-t border-border/40 px-6 py-4 text-muted-foreground">
+                <div className="border-t border-border/40 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-muted-foreground">
                   {faq.answer}
                 </div>
               </details>

@@ -75,11 +75,11 @@ export default function TemplatesPage() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-primary/5 via-background to-background px-4 py-20">
+      <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 space-y-6 text-center">
+          <div className="mb-8 sm:mb-12 space-y-4 sm:space-y-6 text-center px-2">
             <BlurText
-              className={`text-4xl font-bold md:text-6xl ${
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold ${
                 isVisible ? "translate-y-0" : "translate-y-4"
               }`}
               delay={100}
@@ -91,7 +91,7 @@ export default function TemplatesPage() {
               </span>
             </BlurText>
             <BlurText
-              className={`mx-auto max-w-2xl text-lg text-muted-foreground md:text-xl ${
+              className={`mx-auto max-w-2xl text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground px-4 ${
                 isVisible ? "translate-y-0" : "translate-y-4"
               }`}
               delay={300}
@@ -104,20 +104,20 @@ export default function TemplatesPage() {
 
           {/* Search Bar */}
           <div
-            className={`mx-auto max-w-2xl transition-all delay-300 duration-700 ${
+            className={`mx-auto max-w-2xl transition-all delay-300 duration-700 px-2 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-4 opacity-0"
             }`}
           >
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+              <Search className="absolute left-3 sm:left-4 top-1/2 h-4 w-4 sm:h-5 sm:w-5 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="text"
                 placeholder="Shablonlarni qidirish..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-12 rounded-full border-border/50 bg-background/50 pl-12 pr-4 text-base backdrop-blur-sm transition-all hover:border-primary/50 focus:border-primary"
+                className="h-11 sm:h-12 rounded-full border-border/50 bg-background/50 pl-10 sm:pl-12 pr-4 text-sm sm:text-base backdrop-blur-sm transition-all hover:border-primary/50 focus:border-primary"
               />
             </div>
           </div>
@@ -125,12 +125,12 @@ export default function TemplatesPage() {
       </section>
 
       {/* Filters and Templates */}
-      <section className="px-4 py-12">
+      <section className="px-4 py-8 sm:py-12">
         <div className="mx-auto max-w-7xl">
           {/* Category Filters */}
-          <div className="mb-8 flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-              <Filter className="h-4 w-4" />
+          <div className="mb-6 sm:mb-8 flex flex-wrap items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-muted-foreground w-full sm:w-auto mb-2 sm:mb-0">
+              <Filter className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span>Kategoriya:</span>
             </div>
 
@@ -192,9 +192,9 @@ export default function TemplatesPage() {
           </div>
 
           {/* Feature */}
-          <div className="mb-8 flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-              <Filter className="h-4 w-4" />
+          <div className="mb-6 sm:mb-8 flex flex-wrap items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-muted-foreground w-full sm:w-auto mb-2 sm:mb-0">
+              <Filter className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span>Feature:</span>
             </div>
 
@@ -258,7 +258,7 @@ export default function TemplatesPage() {
           {/* Templates Grid */}
           {templates ? (
             templates.data.results.length > 0 ? (
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {templates.data.results.map((template) => {
                   return (
                     <>
@@ -298,14 +298,14 @@ export default function TemplatesPage() {
                 </Button>
               </div>
             )
-          ) : (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <TemplateCardSkeleton />
-              <TemplateCardSkeleton />
-              <TemplateCardSkeleton />
-              <TemplateCardSkeleton />
-            </div>
-          )}
+            ) : (
+              <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <TemplateCardSkeleton />
+                <TemplateCardSkeleton />
+                <TemplateCardSkeleton />
+                <TemplateCardSkeleton />
+              </div>
+            )}
         </div>
       </section>
     </main>

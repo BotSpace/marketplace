@@ -15,7 +15,7 @@ const envSchema = z.object({
     .url("CONSTRUCTOR_URL must be a valid URL")
     .optional(),
   SALES_URL: z.string().url("SALES_URL must be a valid URL").optional(),
-  MANAGER_URL: z.string().url("MANAGER_URL must be a valid URL").optional(),
+  ADMIN_PANEL: z.string().url("ADMIN_PANEL must be a valid URL").optional(),
   NEXTAUTH_SECRET: z
     .string()
     .min(32, "NEXTAUTH_SECRET must be at least 32 characters")
@@ -29,7 +29,7 @@ const env = envSchema.parse({
   CONSTRUCTOR_URL: process.env.CONSTRUCTOR_URL,
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   SALES_URL: process.env.SALES_URL,
-  MANAGER_URL: process.env.MANAGER_URL,
+  ADMIN_PANEL: process.env.ADMIN_PANEL,
   TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
 });
 

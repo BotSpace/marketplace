@@ -33,16 +33,24 @@ export function OtpAuthDialog({ logo, children }: OtpAuthDialogProps) {
   async function Login(code: string) {
     const toastId = toast.loading("Loading...");
 
-    const response = await signIn("credentials", {
-      redirect: false,
-      code,
-    });
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        code,
+      });
 
-    if (!response?.ok) {
-      toast.success("Code xato!", { id: toastId });
+      console.log("🚀 ~ file: otp-dialog.tsx:37 ~ res:", res);
+
+      if (res?.ok) {
+        toast.success("Hissobga kirdingiz", { id: toastId });
+        setOpen(false);
+      } else {
+        toast.error("Code xato!", { id: toastId });
+      }
+    } catch (err) {
+      console.log("🚀 ~ file: otp-dialog.tsx:49 ~ err:", err);
+      toast.error("Code xato!", { id: toastId });
     }
-    toast.success("Hissobga kirdingiz", { id: toastId });
-    setOpen(false);
   }
 
   const [code, setCode] = useState("");

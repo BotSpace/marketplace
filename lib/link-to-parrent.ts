@@ -13,7 +13,7 @@ export function useLinkToParent(options: UseLinkToParentOptions = {}) {
 
   function handleClick() {
     if (window) {
-      const targetUrl = options.href || env.MANAGER_URL + `/${lang}`;
+      const targetUrl = options.href || env.ADMIN_PANEL + `/${lang}`;
       window.location.href = targetUrl;
     }
   }

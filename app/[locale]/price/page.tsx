@@ -139,11 +139,11 @@ export default function PricingPage() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-primary/5 via-background to-background px-4 py-20">
+      <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 space-y-6 text-center">
+          <div className="mb-8 sm:mb-12 space-y-4 sm:space-y-6 text-center px-2">
             <BlurText
-              className={`text-4xl font-bold md:text-6xl ${
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold ${
                 isVisible ? "translate-y-0" : "translate-y-4"
               }`}
               delay={100}
@@ -155,7 +155,7 @@ export default function PricingPage() {
               </span>
             </BlurText>
             <BlurText
-              className={`mx-auto max-w-2xl text-lg text-muted-foreground md:text-xl ${
+              className={`mx-auto max-w-2xl text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground px-4 ${
                 isVisible ? "translate-y-0" : "translate-y-4"
               }`}
               delay={300}
@@ -170,13 +170,13 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Plans Toggle */}
-      <section className="px-4 py-12">
+      <section className="px-4 py-8 sm:py-12">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 flex justify-center">
-            <div className="inline-flex rounded-full border border-border/50 bg-muted/30 p-1">
+          <div className="mb-8 sm:mb-12 flex justify-center px-2">
+            <div className="inline-flex rounded-full border border-border/50 bg-muted/30 p-1 w-full sm:w-auto">
               <button
                 onClick={() => setSelectedPlan("pay-per-use")}
-                className={`rounded-full px-6 py-2 text-sm font-medium transition-all ${
+                className={`rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all flex-1 sm:flex-none ${
                   selectedPlan === "pay-per-use"
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
@@ -186,7 +186,7 @@ export default function PricingPage() {
               </button>
               <button
                 onClick={() => setSelectedPlan("enterprise")}
-                className={`rounded-full px-6 py-2 text-sm font-medium transition-all ${
+                className={`rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all flex-1 sm:flex-none ${
                   selectedPlan === "enterprise"
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
@@ -199,18 +199,18 @@ export default function PricingPage() {
 
           {/* Pay-per-use Plan */}
           {selectedPlan === "pay-per-use" && (
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            <div className="space-y-8 sm:space-y-12">
+              <div className="text-center px-2">
+                <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold">
                   Pay-per-use modeli
                 </h2>
-                <p className="mx-auto max-w-2xl text-muted-foreground">
+                <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground px-4">
                   Faqat ishlatgan resurslarga to'lang. Hech qanday abonent
                   to'lovi yoki minimal summa yo'q.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {payPerUseFeatures.map((feature, idx) => {
                   const Icon = feature.icon;
                   return (
@@ -284,7 +284,7 @@ export default function PricingPage() {
                   </CardContent>
                   <CardFooter>
                     <Link href="/template" className="w-full">
-                      <Button className="w-full" size="lg">
+                      <Button className="w-full text-sm sm:text-base" size="lg">
                         Hozir boshlash
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -297,18 +297,18 @@ export default function PricingPage() {
 
           {/* Enterprise Plan */}
           {selectedPlan === "enterprise" && (
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            <div className="space-y-8 sm:space-y-12">
+              <div className="text-center px-2">
+                <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold">
                   Enterprise yechim
                 </h2>
-                <p className="mx-auto max-w-2xl text-muted-foreground">
+                <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground px-4">
                   Katta kompaniyalar va tashkilotlar uchun maxsus yechimlar.
                   Barcha funksiyalar va shaxsiy yordam.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {enterpriseFeatures.map((feature, idx) => {
                   const Icon = feature.icon;
                   return (
@@ -370,13 +370,13 @@ export default function PricingPage() {
                   </CardContent>
                   <CardFooter className="flex flex-col gap-4">
                     <div className="w-full text-center">
-                      <p className="mb-2 text-sm text-muted-foreground">
+                      <p className="mb-2 text-xs sm:text-sm text-muted-foreground">
                         Narx biznes ehtiyojlaringizga qarab belgilanadi
                       </p>
-                      <p className="text-2xl font-bold">Individual narx</p>
+                      <p className="text-xl sm:text-2xl font-bold">Individual narx</p>
                     </div>
                     <Link href="/contact" className="w-full">
-                      <Button className="w-full" size="lg" variant="outline">
+                      <Button className="w-full text-sm sm:text-base" size="lg" variant="outline">
                         <MessageCircle className="mr-2 h-4 w-4" />
                         Biz bilan bog'lanish
                       </Button>
@@ -390,15 +390,15 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="scroll-animate bg-muted/20 px-4 py-20">
+      <section className="scroll-animate bg-muted/20 px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+          <div className="mb-8 sm:mb-12 text-center px-2">
+            <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold">
               Tez-tez so'raladigan savollar
             </h2>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {[
               {
                 question: "Pay-per-use modelida minimal to'lov bormi?",
@@ -442,26 +442,26 @@ export default function PricingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="scroll-animate-scale px-4 py-20">
+      <section className="scroll-animate-scale px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-4xl">
           <Card className="border-primary/30 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl font-bold md:text-4xl">
+            <CardHeader className="text-center p-6 sm:p-8">
+              <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold">
                 Hozir boshlang!
               </CardTitle>
-              <CardDescription className="text-lg">
+              <CardDescription className="text-sm sm:text-base md:text-lg mt-2">
                 Bepul shablondan boshlang va faqat ishlatgan resurslarga to'lang
               </CardDescription>
             </CardHeader>
-            <CardFooter className="flex flex-col gap-4 sm:flex-row">
-              <Link href="/template" className="flex-1">
-                <Button className="w-full" size="lg">
+            <CardFooter className="flex flex-col gap-3 sm:gap-4 sm:flex-row p-6 sm:p-8 pt-0">
+              <Link href="/template" className="flex-1 w-full sm:w-auto">
+                <Button className="w-full text-sm sm:text-base" size="lg">
                   Shablonlarni ko'rish
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/contact" className="flex-1">
-                <Button className="w-full" size="lg" variant="outline">
+              <Link href="/contact" className="flex-1 w-full sm:w-auto">
+                <Button className="w-full text-sm sm:text-base" size="lg" variant="outline">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Biz bilan bog'lanish
                 </Button>

@@ -120,7 +120,7 @@ export default function Home() {
   return (
     <main className="flex flex-col overflow-hidden">
       {/* Hero Section with Strong Headline */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-20">
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-12 sm:py-20">
         {/* Background Video and Images */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           {/* Video Background */}
@@ -146,21 +146,21 @@ export default function Home() {
           />
         </div>
 
-        <div className="mx-auto max-w-4xl space-y-8 text-center">
+        <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8 text-center">
           {/* Badge */}
           <div
-            className={`inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-all duration-700 ${
+            className={`inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-medium text-primary transition-all duration-700 ${
               isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
             }`}
           >
             <span className="inline-flex items-center gap-2">
-              <Sparkles className="h-4 w-4" />
+              <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" />
               Kod yozmasdan yarating
             </span>
           </div>
 
           <BlurText
-            className={`text-balance text-3xl font-bold leading-tight md:text-7xl ${
+            className={`text-balance text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold leading-tight px-2 ${
               isVisible ? "translate-y-0" : "translate-y-4"
             }`}
             delay={100}
@@ -173,7 +173,7 @@ export default function Home() {
           </BlurText>
 
           <BlurText
-            className={`mx-auto max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground md:text-xl ${
+            className={`mx-auto max-w-2xl text-balance text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-muted-foreground px-4 ${
               isVisible ? "translate-y-0" : "translate-y-4"
             }`}
             delay={300}
@@ -186,7 +186,7 @@ export default function Home() {
           </BlurText>
 
           <div
-            className={`flex flex-col justify-center gap-4 pt-8 transition-all delay-300 duration-700 sm:flex-row ${
+            className={`flex flex-col justify-center gap-3 sm:gap-4 pt-6 sm:pt-8 transition-all delay-300 duration-700 px-4 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-4 opacity-0"
@@ -194,71 +194,71 @@ export default function Home() {
           >
             <Link
               href="/template"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 active:scale-95"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 active:scale-95 w-full sm:w-auto"
             >
               Hozir boshlash
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-primary/50 bg-primary/5 px-8 py-4 font-semibold text-foreground transition-all duration-300 hover:scale-105 hover:bg-primary/10 active:scale-95"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-primary/50 bg-primary/5 px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-foreground transition-all duration-300 hover:scale-105 hover:bg-primary/10 active:scale-95 w-full sm:w-auto"
             >
-              <MessageCircle className="h-5 w-5" />
+              <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
               Menga yordam kerak
             </Link>
           </div>
 
           <div
-            className={`delay-400 grid grid-cols-3 gap-6 pt-16 text-sm transition-all duration-700 ${
+            className={`delay-400 grid grid-cols-3 gap-3 sm:gap-6 pt-12 sm:pt-16 text-xs sm:text-sm transition-all duration-700 px-2 ${
               isVisible ? "opacity-100" : "opacity-0"
             }`}
           >
-            <div className="group cursor-default space-y-2 transition-all duration-300 hover:scale-110 hover:transform">
-              <div className="flex items-center justify-center gap-2">
-                <Users className="h-5 w-5 text-primary" />
+            <div className="group cursor-default space-y-1 sm:space-y-2 transition-all duration-300 hover:scale-110 hover:transform">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
+                <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 <CountingNumber
                   value={5000}
                   suffix="+"
                   duration={2000}
-                  className="text-3xl font-bold text-primary md:text-4xl"
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary"
                 />
               </div>
               <BlurText
-                className="text-muted-foreground transition-colors group-hover:text-foreground"
+                className="text-xs sm:text-sm text-muted-foreground transition-colors group-hover:text-foreground text-center"
                 delay={500}
               >
                 Faol foydalanuvchi
               </BlurText>
             </div>
-            <div className="group cursor-default space-y-2 transition-all duration-300 hover:scale-110 hover:transform">
-              <div className="flex items-center justify-center gap-2">
-                <Smartphone className="h-5 w-5" />
+            <div className="group cursor-default space-y-1 sm:space-y-2 transition-all duration-300 hover:scale-110 hover:transform">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
+                <Smartphone className="h-4 w-4 sm:h-5 sm:w-5" />
                 <CountingNumber
                   value={15000}
                   suffix="+"
                   duration={2000}
-                  className="text-3xl font-bold md:text-4xl"
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold"
                 />
               </div>
               <BlurText
-                className="muted-foreground transition-colors group-hover:text-foreground"
+                className="text-xs sm:text-sm muted-foreground transition-colors group-hover:text-foreground text-center"
                 delay={600}
               >
                 Yaratilgan bot
               </BlurText>
             </div>
-            <div className="group cursor-default space-y-2 transition-all duration-300 hover:scale-110 hover:transform">
-              <div className="flex items-center justify-center gap-2">
-                <MessageCircle className="h-5 w-5 text-primary" />
+            <div className="group cursor-default space-y-1 sm:space-y-2 transition-all duration-300 hover:scale-110 hover:transform">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
+                <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 <CountingNumber
                   value={1000000}
                   suffix="+"
                   duration={2000}
-                  className="text-3xl font-bold text-primary md:text-4xl"
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary"
                 />
               </div>
               <BlurText
-                className="text-muted-foreground transition-colors group-hover:text-foreground"
+                className="text-xs sm:text-sm text-muted-foreground transition-colors group-hover:text-foreground text-center"
                 delay={700}
               >
                 Xabarlar
@@ -269,13 +269,13 @@ export default function Home() {
       </section>
 
       {/* Platform Dashboard Showcase */}
-      <section className="scroll-animate bg-gradient-to-b from-transparent via-primary/5 to-transparent px-4 py-20">
+      <section className="scroll-animate bg-gradient-to-b from-transparent via-primary/5 to-transparent px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 flex flex-col space-y-4 text-center">
-            <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
+          <div className="mb-8 sm:mb-16 flex flex-col space-y-3 sm:space-y-4 text-center px-2">
+            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
               Kuchli platform
             </BlurText>
-            <BlurText className="text-lg text-muted-foreground" delay={400}>
+            <BlurText className="text-base sm:text-lg text-muted-foreground px-4" delay={400}>
               Barcha bot metrikalari, analitika va managing bir joyda
             </BlurText>
           </div>
@@ -288,7 +288,7 @@ export default function Home() {
           ></iframe>
 
           {/* Feature highlights below image */}
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
             {[
               {
                 icon: MessageCircle,
@@ -366,18 +366,18 @@ export default function Home() {
       </section> */}
 
       {/* Main Benefits Section - Enhanced card design with blur loading */}
-      <section className="scroll-animate px-4 py-20">
+      <section className="scroll-animate px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-16 space-y-4 text-center">
-            <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
+          <div className="mb-8 sm:mb-16 space-y-3 sm:space-y-4 text-center px-2">
+            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
               Nega BotMather ni tanlash kerak?
             </BlurText>
-            <BlurText className="text-lg text-muted-foreground" delay={400}>
+            <BlurText className="text-base sm:text-lg text-muted-foreground px-4" delay={400}>
               5 ta asosiy sabab — Telegram bot yaratishning eng yaxshi usuli
             </BlurText>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {benefitsLoaded ? (
               <>
                 {[
@@ -473,18 +473,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="scroll-animate bg-muted/20 px-4 py-20">
+      <section className="scroll-animate bg-muted/20 px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-16 space-y-4 text-center">
-            <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
+          <div className="mb-8 sm:mb-16 space-y-3 sm:space-y-4 text-center px-2">
+            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
               Qanday ishlaydi?
             </BlurText>
-            <BlurText className="text-lg text-muted-foreground" delay={400}>
+            <BlurText className="text-base sm:text-lg text-muted-foreground px-4" delay={400}>
               Uchta oddiy qadam — botingiz tayyor!
             </BlurText>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
             {[
               {
                 number: "1",
@@ -542,18 +542,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="scroll-animate px-4 py-20">
+      <section className="scroll-animate px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-16 space-y-4 text-center">
-            <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
+          <div className="mb-8 sm:mb-16 space-y-3 sm:space-y-4 text-center px-2">
+            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
               Foydalanuvchilar nima deyishadi
             </BlurText>
-            <BlurText className="text-lg text-muted-foreground" delay={400}>
+            <BlurText className="text-base sm:text-lg text-muted-foreground px-4" delay={400}>
               5 yulduzli reytinglar haqiqiy customer feedbackidan
             </BlurText>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-6 md:grid-cols-3">
             {testimonialsLoaded ? (
               <>
                 {[
@@ -636,34 +636,33 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="scroll-animate-scale px-4 py-20">
+      <section className="scroll-animate-scale px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="relative space-y-8 overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 p-12 text-center md:p-16">
+          <div className="relative space-y-6 sm:space-y-8 overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 p-6 sm:p-12 md:p-16 text-center">
             <div className="absolute inset-0 opacity-10">
               <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-primary blur-3xl"></div>
             </div>
 
-            <div className="relative space-y-4">
-              <BlurText className="text-4xl font-bold md:text-5xl" delay={200}>
+            <div className="relative space-y-3 sm:space-y-4">
+              <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
                 Hozir boshlang!
               </BlurText>
-              <BlurText className="text-xl text-muted-foreground" delay={400}>
+              <BlurText className="text-base sm:text-lg md:text-xl text-muted-foreground px-2" delay={400}>
                 Bepul shablondan boshlang — birinchi bot bepul!
               </BlurText>
             </div>
 
-            <div className="relative flex flex-col justify-center gap-4 pt-4 sm:flex-row">
+            <div className="relative flex flex-col justify-center gap-3 sm:gap-4 pt-4 w-full sm:w-auto">
               <Link
-                href="/template
-                "
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 active:scale-95"
+                href="/template"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 active:scale-95 w-full sm:w-auto"
               >
                 Shablonlarni ko'rish
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/price"
-                className="group inline-flex items-center justify-center gap-2 rounded-full border border-primary/50 bg-background/50 px-8 py-4 font-semibold text-foreground transition-all duration-300 hover:scale-105 hover:bg-background/80 active:scale-95"
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-primary/50 bg-background/50 px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-foreground transition-all duration-300 hover:scale-105 hover:bg-background/80 active:scale-95 w-full sm:w-auto"
               >
                 Narxlarni ko'rish
               </Link>

@@ -92,6 +92,29 @@ body {
   }
 }
 
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Better touch targets */
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    min-height: 44px; /* iOS recommended touch target size */
+  }
+  
+  /* Prevent text size adjustment on iOS */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Better scrolling on mobile */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* Animations for page sections */
 @keyframes slideInUp {
   from {
