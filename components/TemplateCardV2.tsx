@@ -3,6 +3,7 @@
 import { TemplateListType } from "@/types/template";
 import { Eye } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function TemplateCardV2(template: TemplateListType) {
   return (
@@ -10,10 +11,13 @@ export default function TemplateCardV2(template: TemplateListType) {
       <div className="rounded-xl sm:rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 duration-300">
         {/* Image Section with Discount Badge */}
         <div className="group relative h-48 sm:h-64 overflow-hidden">
-          <img
+          <Image
             src={template.image || "/placeholder.svg"}
-            alt={template.name}
-            className="h-full w-full rounded-t-xl sm:rounded-t-2xl object-cover transition-transform duration-300"
+            alt={template.name || "Template image"}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="rounded-t-xl sm:rounded-t-2xl object-cover transition-transform duration-300"
+            quality={85}
           />
 
           {/* Discount Badge */}

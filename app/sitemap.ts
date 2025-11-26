@@ -9,7 +9,7 @@ async function getTemplates() {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API || "https://api.botmother.uz";
     const response = await fetch(`${apiUrl}/api/template?page_size=1000`, {
-      next: { revalidate: 3600 }, // Revalidate every hour
+      next: { revalidate: 86400 }, // Revalidate every 24 hours (1 day)
     });
 
     if (response.ok) {

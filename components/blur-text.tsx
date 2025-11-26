@@ -2,11 +2,28 @@
 
 import React from "react";
 
+type AllowedTags =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "p"
+  | "span"
+  | "div"
+  | "label"
+  | "strong"
+  | "em"
+  | "b"
+  | "i";
+
 interface BlurTextProps {
   className?: string;
   delay?: number;
   blurAmount?: number;
   children: React.ReactNode;
+  as?: AllowedTags;
 }
 
 export function BlurText({
@@ -14,9 +31,12 @@ export function BlurText({
   delay = 0,
   blurAmount = 8,
   children,
+  as = "span",
 }: BlurTextProps) {
+  const Component = as;
+
   return (
-    <span
+    <Component
       className={`inline-block transition-all duration-700 ${className}`}
       style={
         {
@@ -42,6 +62,6 @@ export function BlurText({
         }
       `}</style>
       {children}
-    </span>
+    </Component>
   );
 }

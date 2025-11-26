@@ -105,7 +105,8 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code", // Google Search Console verification code
+    google: "onQY4wdd4B5pMzaHs6qBN0VDSxNxq4-I65aPd7aR8FE", // Google Search Console verification code
+    yandex: "f0ff0f420dff80f0", // Yandex verification code
   },
   category: "Technology",
   viewport: {
@@ -195,6 +196,53 @@ export default async function RootLayout({
             </AuthProvider>
           </ReactQueryProvider>
         </NextIntlClientProvider>
+        {/* Yandex.Metrika counter */}
+        <Script id="yandex-metrika" strategy="afterInteractive">
+          {`
+            (function (m, e, t, r, i, k, a) {
+              m[i] =
+                m[i] ||
+                function () {
+                  (m[i].a = m[i].a || []).push(arguments);
+                };
+              m[i].l = 1 * new Date();
+              for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                  return;
+                }
+              }
+              (k = e.createElement(t)),
+                (a = e.getElementsByTagName(t)[0]),
+                (k.async = 1),
+                (k.src = r),
+                a.parentNode.insertBefore(k, a);
+            })(
+              window,
+              document,
+              "script",
+              "https://mc.yandex.ru/metrika/tag.js?id=103915287",
+              "ym",
+            );
+            ym(103915287, "init", {
+              ssr: true,
+              webvisor: true,
+              clickmap: true,
+              ecommerce: "dataLayer",
+              accurateTrackBounce: true,
+              trackLinks: true,
+            });
+          `}
+        </Script>
+        <noscript>
+          <div>
+            <img
+              src="https://mc.yandex.ru/watch/103915287"
+              style={{ position: "absolute", left: "-9999px" }}
+              alt=""
+            />
+          </div>
+        </noscript>
+        {/* /Yandex.Metrika counter */}
       </body>
     </html>
   );

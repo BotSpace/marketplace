@@ -20,13 +20,13 @@ jobs:
 
       - name: Copy env
         run: |
-          cp env.example .env
+          cp .env.example .env
 
       - name: update env
         run: |
           update_env() {
               local env_file=".env"
-              cp env.example "$env_file"
+              cp .env.example "$env_file"
 
               for kv in "$@"; do
                   local key="${kv%%=*}"
@@ -44,7 +44,6 @@ jobs:
             "MANAGER_URL=${{ vars.MANAGER_URL }}" \
             "TELEGRAM_BOT_TOKEN=${{ secrets.BOT_TOKEN }}" \
             "NODE_ENV=production"
-
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -116,11 +115,11 @@ jobs:
             cd $DIR
             git fetch origin main
             git reset --hard origin/main
-            cp env.example .env
+            cp .env.example .env
 
             update_env() {
                 local env_file=".env"
-                cp env.example "$env_file"
+                cp .env.example "$env_file"
 
                 for kv in "$@"; do
                     local key="${kv%%=*}"
@@ -142,4 +141,3 @@ jobs:
             export PORT=${{ vars.PORT }}
             echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username jscorptech --password-stdin
             docker stack deploy -c stack.yaml ${{ env.PROJECT_NAME }} --with-registry-auth
-

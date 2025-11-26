@@ -140,6 +140,7 @@ export default function Contact() {
           </div>
 
           <BlurText
+            as="h1"
             className="text-balance text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight px-2"
             delay={100}
             blurAmount={8}

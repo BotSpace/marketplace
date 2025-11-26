@@ -143,6 +143,7 @@ export default function PricingPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 sm:mb-12 space-y-4 sm:space-y-6 text-center px-2">
             <BlurText
+              as="h1"
               className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold ${
                 isVisible ? "translate-y-0" : "translate-y-4"
               }`}

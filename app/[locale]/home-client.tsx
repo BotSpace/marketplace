@@ -160,6 +160,7 @@ export default function HomeClient() {
           </div>
 
           <BlurText
+            as="h1"
             className={`text-balance text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold leading-tight px-2 ${
               isVisible ? "translate-y-0" : "translate-y-4"
             }`}

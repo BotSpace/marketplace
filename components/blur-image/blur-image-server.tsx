@@ -23,6 +23,6 @@ export default async function BlurImageServer({
   const { base64 } = await getPlaiceholder(buffer);
 
   return (
-    <Image src={src} fill alt="image" placeholder="blur" blurDataURL={base64} />
+    <Image src={src} fill alt={alt} placeholder="blur" blurDataURL={base64} />
   );
 }
