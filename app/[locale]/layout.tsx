@@ -30,7 +30,8 @@ const basePath = "/website";
 export const metadata: Metadata = {
   metadataBase: new URL(`${baseUrl}${basePath}`),
   title: {
-    default: "BotMather - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
+    default:
+      "BotMather - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
     template: "%s | BotMather",
   },
   description:
@@ -98,15 +99,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${baseUrl}${basePath}`,
     languages: {
-      "uz": `${baseUrl}${basePath}`,
-      "en": `${baseUrl}${basePath}/en`,
-      "ru": `${baseUrl}${basePath}/ru`,
-      "cr": `${baseUrl}${basePath}/cr`,
+      uz: `${baseUrl}${basePath}`,
+      en: `${baseUrl}${basePath}/en`,
+      ru: `${baseUrl}${basePath}/ru`,
+      cr: `${baseUrl}${basePath}/cr`,
     },
   },
   verification: {
     google: "onQY4wdd4B5pMzaHs6qBN0VDSxNxq4-I65aPd7aR8FE", // Google Search Console verification code
-    yandex: "f0ff0f420dff80f0", // Yandex verification code
+    other: {
+      "yandex-verification": "f0ff0f420dff80f0", // Yandex verification code
+    },
   },
   category: "Technology",
   viewport: {
@@ -162,7 +165,8 @@ export default async function RootLayout({
                 "@type": "Offer",
                 price: "0",
                 priceCurrency: "USD",
-                description: "Pay-per-use pricing model - pay only for what you use",
+                description:
+                  "Pay-per-use pricing model - pay only for what you use",
               },
               aggregateRating: {
                 "@type": "AggregateRating",
