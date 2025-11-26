@@ -24,9 +24,90 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.SALES_URL || "https://botmother.uz";
+const basePath = "/website";
+
 export const metadata: Metadata = {
-  title: "BotMather - Telegram Bot Constructor",
-  description: "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
+  metadataBase: new URL(`${baseUrl}${basePath}`),
+  title: {
+    default: "BotMather - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
+    template: "%s | BotMather",
+  },
+  description:
+    "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring. E-commerce, CRM, Support bot va boshqa 100+ tayyor shablonlar.",
+  keywords: [
+    "telegram bot",
+    "bot yaratish",
+    "telegram bot constructor",
+    "bot shablonlari",
+    "e-commerce bot",
+    "CRM bot",
+    "support bot",
+    "telegram bot builder",
+    "no-code bot",
+    "botmather",
+    "telegram botlar",
+    "bot platformasi",
+    "uzbekistan",
+    "bot yaratish platformasi",
+  ],
+  authors: [{ name: "BotMather" }],
+  creator: "BotMather",
+  publisher: "BotMather",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "uz_UZ",
+    url: `${baseUrl}${basePath}`,
+    siteName: "BotMather",
+    title: "BotMather - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
+    description:
+      "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
+    images: [
+      {
+        url: `${baseUrl}${basePath}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "BotMather - Telegram Bot Constructor",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BotMather - Telegram Bot Constructor",
+    description:
+      "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
+    images: [`${baseUrl}${basePath}/og-image.jpg`],
+    creator: "@botmather",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: `${baseUrl}${basePath}`,
+    languages: {
+      "uz": `${baseUrl}${basePath}`,
+      "en": `${baseUrl}${basePath}/en`,
+      "ru": `${baseUrl}${basePath}/ru`,
+      "cr": `${baseUrl}${basePath}/cr`,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code", // Google Search Console verification code
+  },
+  category: "Technology",
   viewport: {
     width: "device-width",
     initialScale: 1,
@@ -66,6 +147,37 @@ export default async function RootLayout({
             gtag('config', 'G-6SN3VK4KY0');
           `}
         </Script>
+        {/* Structured Data (JSON-LD) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "BotMather",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+                description: "Pay-per-use pricing model - pay only for what you use",
+              },
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                ratingCount: "5000",
+              },
+              description:
+                "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
+              url: `${baseUrl}${basePath}`,
+              author: {
+                "@type": "Organization",
+                name: "BotMather",
+              },
+            }),
+          }}
+        />
         <NextIntlClientProvider messages={messages}>
           <ReactQueryProvider>
             <AuthProvider>
