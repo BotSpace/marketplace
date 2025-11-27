@@ -39,6 +39,8 @@ jobs:
             "NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }}" \
             "MANAGER_URL=${{ vars.MANAGER_URL }}" \
             "TELEGRAM_BOT_TOKEN=${{ secrets.BOT_TOKEN }}" \
+            "SALES_URL=${{ vars.SALES_URL }}" \
+            "ADMIN_PANEL=${{ vars.ADMIN_PANEL }}" \
             "NODE_ENV=production"
 
       - name: Set up Docker Buildx
