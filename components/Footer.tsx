@@ -47,6 +47,14 @@ export function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/price"
+                  className="transition hover:text-foreground"
+                >
+                  Qanday ishlaydi
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="col-span-2 sm:col-span-1">

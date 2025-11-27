@@ -39,4 +39,3 @@ networks:
     driver: overlay
     attachable: true
     external: true
-

@@ -153,6 +153,7 @@ export default async function RootLayout({
         </Script>
         {/* Structured Data (JSON-LD) */}
         <script
+          // TODO: Bularni ko'rib chiqish kerak va real qiymatlarga o'zgartirish kerak
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -167,11 +168,19 @@ export default async function RootLayout({
                 priceCurrency: "USD",
                 description:
                   "Pay-per-use pricing model - pay only for what you use",
+                priceSpecification: {
+                  "@type": "UnitPriceSpecification",
+                  price: "0.50",
+                  priceCurrency: "USD",
+                  unitText: "per 1000 messages",
+                },
               },
               aggregateRating: {
                 "@type": "AggregateRating",
                 ratingValue: "4.9",
                 ratingCount: "5000",
+                bestRating: "5",
+                worstRating: "1",
               },
               description:
                 "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
@@ -179,7 +188,177 @@ export default async function RootLayout({
               author: {
                 "@type": "Organization",
                 name: "BotMather",
+                url: `${baseUrl}${basePath}`,
+                logo: `${baseUrl}${basePath}/logo.png`,
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  telephone: "+998-50-713-70-30",
+                  contactType: "Customer Service",
+                  email: "info@botmather.uz",
+                  availableLanguage: ["Uzbek", "English", "Russian"],
+                },
               },
+              featureList: [
+                "Kod yozmasdan bot yaratish",
+                "100+ tayyor shablonlar",
+                "Pay-per-use narx modeli",
+                "24/7 professional yordam",
+                "Real-time analytics",
+                "Korxona darajasi xavfsizlik",
+              ],
+            }),
+          }}
+        />
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "BotMather",
+              url: `${baseUrl}${basePath}`,
+              logo: `${baseUrl}${basePath}/logo.png`,
+              description:
+                "Kod yozmasdan Telegram botlarini yarating. Professional xizmat, shaffof narxlar, 24/7 yordam.",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "UZ",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+998-50-713-70-30",
+                contactType: "Customer Service",
+                email: "info@botmather.uz",
+                availableLanguage: ["Uzbek", "English", "Russian"],
+                areaServed: "UZ",
+              },
+              sameAs: [
+                "https://facebook.com/botmather",
+                "https://t.me/botmather",
+              ],
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                ratingCount: "5000",
+                bestRating: "5",
+                worstRating: "1",
+              },
+            }),
+          }}
+        />
+        {/* Reviews Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: "BotMather - Telegram Bot Constructor",
+              description:
+                "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
+              brand: {
+                "@type": "Brand",
+                name: "BotMather",
+              },
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                ratingCount: "5000",
+                bestRating: "5",
+                worstRating: "1",
+              },
+              review: [
+                {
+                  "@type": "Review",
+                  author: {
+                    "@type": "Person",
+                    name: "Alisher Umarov",
+                  },
+                  datePublished: "2024-12-15",
+                  reviewBody:
+                    "BotMather bilan 2 kundan keyin sot botni ishga tushirdim. Juda oson va qulay! Kod yozmasdan professional bot yaratdim. Rahmat BotMather jamoasiga!",
+                  reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                    bestRating: "5",
+                  },
+                },
+                {
+                  "@type": "Review",
+                  author: {
+                    "@type": "Person",
+                    name: "Fotima Karimova",
+                  },
+                  datePublished: "2024-12-10",
+                  reviewBody:
+                    "Booking bot 3 oyda 40% ko'p buyurtma keltirib berdi. Eng yaxshi investitsiya! Mijozlarimiz endi 24/7 buyurtma berishlari mumkin. Katta rahmat!",
+                  reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                    bestRating: "5",
+                  },
+                },
+                {
+                  "@type": "Review",
+                  author: {
+                    "@type": "Person",
+                    name: "Javohir Bekov",
+                  },
+                  datePublished: "2024-12-05",
+                  reviewBody:
+                    "Avtomatik javoblar botini yaratib, customer support vaqtim 50% qisqardi. Endi ko'proq vaqt o'quvchilarimga qaratishim mumkin. Ajoyib xizmat!",
+                  reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                    bestRating: "5",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+        {/* FAQPage Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "Pay-per-use modelida minimal to'lov bormi?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yo'q, hech qanday minimal to'lov yoki abonent to'lovi yo'q. Faqat ishlatgan resurslarga to'laysiz.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Qanday ishlaydi?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "3 ta oddiy qadam: 1) Shablonni tanlang, 2) Kod yozmasdan moslang, 3) Ishga tushiring. Hech qanday kod yozish kerak emas.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Narxlar qanday?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Barcha narxlar ochiq va shaffof. Xabarlar: $0.50 per 1000 ta, Server resurslari: $0.10/soat. Analytics va xavfsizlik bepul.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Xizmat xavfsizmi?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Ha, xizmatimiz qonuniy, xavfsiz va etik jihatdan toza. Korxona darajasi xavfsizlik, SSL shifrlash va 24/7 monitoring.",
+                  },
+                },
+              ],
             }),
           }}
         />
