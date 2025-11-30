@@ -133,6 +133,8 @@ export default function HomeClient() {
             loop
             muted
             playsInline
+            preload="none"
+            loading="lazy"
             style={{
               objectFit: "cover",
               width: "100%",
@@ -291,9 +293,11 @@ export default function HomeClient() {
 
           <iframe
             className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border bg-card shadow-2xl transition-all duration-500 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20"
-            src="https://www.youtube.com/embed/6xJWQRVl9nw?si=7IcWFQX3EGpEX5O0&amp;controls=0"
+            src="https://www.youtube.com/embed/6xJWQRVl9nw?si=7IcWFQX3EGpEX5O0&amp;controls=0&amp;loading=lazy"
             title="YouTube video player"
+            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
           ></iframe>
 
           {/* Feature highlights below image */}

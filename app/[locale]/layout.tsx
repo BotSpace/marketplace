@@ -17,11 +17,15 @@ import { Toaster } from "react-hot-toast";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap", // Font optimization for better performance
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap", // Font optimization for better performance
+  preload: true,
 });
 
 const baseUrl = process.env.SALES_URL || "https://botmother.uz";
@@ -138,17 +142,19 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Google tag (gtag.js) */}
+        {/* Google tag (gtag.js) - Lazy loaded for better performance */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6SN3VK4KY0"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-6SN3VK4KY0');
+            gtag('config', 'G-6SN3VK4KY0', {
+              page_path: window.location.pathname,
+            });
           `}
         </Script>
         {/* Structured Data (JSON-LD) */}
@@ -379,8 +385,8 @@ export default async function RootLayout({
             </AuthProvider>
           </ReactQueryProvider>
         </NextIntlClientProvider>
-        {/* Yandex.Metrika counter */}
-        <Script id="yandex-metrika" strategy="afterInteractive">
+        {/* Yandex.Metrika counter - Lazy loaded for better performance */}
+        <Script id="yandex-metrika" strategy="lazyOnload">
           {`
             (function (m, e, t, r, i, k, a) {
               m[i] =

@@ -3,7 +3,6 @@
 import { TemplateListType } from "@/types/template";
 import { Eye } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function TemplateCardV2(template: TemplateListType) {
   return (
@@ -11,14 +10,14 @@ export default function TemplateCardV2(template: TemplateListType) {
       <div className="rounded-xl border border-primary/30 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 duration-300 sm:rounded-2xl">
         {/* Image Section with Discount Badge */}
         <div className="group relative h-48 overflow-hidden sm:h-64">
-          <Image
+          <img
             src={template.image || "/placeholder.svg"}
             alt={template.name || "Template image"}
-            fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="rounded-t-xl object-cover transition-transform duration-300 sm:rounded-t-2xl"
-            quality={85}
           />
+
+          {/* <img src={template.image} /> */}
 
           {/* Discount Badge */}
           <div className="absolute right-2 top-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-2.5 py-1 text-xs font-bold text-white shadow-lg sm:right-4 sm:top-4 sm:px-4 sm:py-2 sm:text-sm">
@@ -89,7 +88,7 @@ export default function TemplateCardV2(template: TemplateListType) {
 
           {/* Call to Action Button */}
           <Link
-            href={`/template/${template.id}`}
+            href={`/template/${template.slug}`}
             className="block w-full rounded-lg bg-gradient-to-r from-blue-500 to-cyan-400 py-2.5 text-center text-xs font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-blue-600 hover:to-cyan-500 hover:shadow-xl active:scale-95 sm:py-3 sm:text-sm md:text-base"
           >
             Botni sinab ko'rish

@@ -34,7 +34,8 @@ export default function BlurImageClient({
 
   useEffect(() => {
     fetchImage();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [src]);
 
   if (base64)
     return (

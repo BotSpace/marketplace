@@ -10,6 +10,7 @@ export interface Feature {
 
 export interface TemplateListType {
   id: number;
+  slug: string;
   name: string;
   image: string;
   views: number;
