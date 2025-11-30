@@ -134,7 +134,6 @@ export default function HomeClient() {
             muted
             playsInline
             preload="none"
-            loading="lazy"
             style={{
               objectFit: "cover",
               width: "100%",
