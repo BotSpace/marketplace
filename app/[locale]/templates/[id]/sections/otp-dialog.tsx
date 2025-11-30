@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/input-otp";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface OtpAuthDialogProps {
   logo?: any;
@@ -29,6 +30,7 @@ interface OtpAuthDialogProps {
 
 export function OtpAuthDialog({ logo, children }: OtpAuthDialogProps) {
   const [open, setOpen] = useState(false);
+  const route = useRouter();
 
   async function Login(code: string) {
     const toastId = toast.loading("Loading...");
@@ -39,10 +41,9 @@ export function OtpAuthDialog({ logo, children }: OtpAuthDialogProps) {
         code,
       });
 
-      console.log("🚀 ~ file: otp-dialog.tsx:37 ~ res:", res);
-
       if (res?.ok) {
         toast.success("Hissobga kirdingiz", { id: toastId });
+        route.push("/templates");
         setOpen(false);
       } else {
         toast.error("Code xato!", { id: toastId });

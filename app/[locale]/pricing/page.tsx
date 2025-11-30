@@ -141,10 +141,10 @@ export default function PricingPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 sm:mb-12 space-y-4 sm:space-y-6 text-center px-2">
+          <div className="mb-8 flex flex-col space-y-4 px-2 text-center sm:mb-12 sm:space-y-6">
             <BlurText
               as="h1"
-              className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold ${
+              className={`text-2xl font-bold sm:text-3xl md:text-4xl lg:text-6xl ${
                 isVisible ? "translate-y-0" : "translate-y-4"
               }`}
               delay={100}
@@ -156,7 +156,7 @@ export default function PricingPage() {
               </span>
             </BlurText>
             <BlurText
-              className={`mx-auto max-w-2xl text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground px-4 ${
+              className={`mx-auto max-w-2xl px-4 text-sm text-muted-foreground sm:text-base md:text-lg lg:text-xl ${
                 isVisible ? "translate-y-0" : "translate-y-4"
               }`}
               delay={300}
@@ -173,11 +173,11 @@ export default function PricingPage() {
       {/* Pricing Plans Toggle */}
       <section className="px-4 py-8 sm:py-12">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 sm:mb-12 flex justify-center px-2">
-            <div className="inline-flex rounded-full border border-border/50 bg-muted/30 p-1 w-full sm:w-auto">
+          <div className="mb-8 flex justify-center px-2 sm:mb-12">
+            <div className="inline-flex w-full rounded-full border border-border/50 bg-muted/30 p-1 sm:w-auto">
               <button
                 onClick={() => setSelectedPlan("pay-per-use")}
-                className={`rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all flex-1 sm:flex-none ${
+                className={`flex-1 rounded-full px-4 py-2 text-xs font-medium transition-all sm:flex-none sm:px-6 sm:text-sm ${
                   selectedPlan === "pay-per-use"
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
@@ -187,7 +187,7 @@ export default function PricingPage() {
               </button>
               <button
                 onClick={() => setSelectedPlan("enterprise")}
-                className={`rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all flex-1 sm:flex-none ${
+                className={`flex-1 rounded-full px-4 py-2 text-xs font-medium transition-all sm:flex-none sm:px-6 sm:text-sm ${
                   selectedPlan === "enterprise"
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
@@ -201,11 +201,11 @@ export default function PricingPage() {
           {/* Pay-per-use Plan */}
           {selectedPlan === "pay-per-use" && (
             <div className="space-y-8 sm:space-y-12">
-              <div className="text-center px-2">
-                <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold">
+              <div className="px-2 text-center">
+                <h2 className="mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl md:text-4xl">
                   Pay-per-use modeli
                 </h2>
-                <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground px-4">
+                <p className="mx-auto max-w-2xl px-4 text-sm text-muted-foreground sm:text-base">
                   Faqat ishlatgan resurslarga to'lang. Hech qanday abonent
                   to'lovi yoki minimal summa yo'q.
                 </p>
@@ -299,11 +299,11 @@ export default function PricingPage() {
           {/* Enterprise Plan */}
           {selectedPlan === "enterprise" && (
             <div className="space-y-8 sm:space-y-12">
-              <div className="text-center px-2">
-                <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold">
+              <div className="px-2 text-center">
+                <h2 className="mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl md:text-4xl">
                   Enterprise yechim
                 </h2>
-                <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground px-4">
+                <p className="mx-auto max-w-2xl px-4 text-sm text-muted-foreground sm:text-base">
                   Katta kompaniyalar va tashkilotlar uchun maxsus yechimlar.
                   Barcha funksiyalar va shaxsiy yordam.
                 </p>
@@ -371,13 +371,19 @@ export default function PricingPage() {
                   </CardContent>
                   <CardFooter className="flex flex-col gap-4">
                     <div className="w-full text-center">
-                      <p className="mb-2 text-xs sm:text-sm text-muted-foreground">
+                      <p className="mb-2 text-xs text-muted-foreground sm:text-sm">
                         Narx biznes ehtiyojlaringizga qarab belgilanadi
                       </p>
-                      <p className="text-xl sm:text-2xl font-bold">Individual narx</p>
+                      <p className="text-xl font-bold sm:text-2xl">
+                        Individual narx
+                      </p>
                     </div>
                     <Link href="/contact" className="w-full">
-                      <Button className="w-full text-sm sm:text-base" size="lg" variant="outline">
+                      <Button
+                        className="w-full text-sm sm:text-base"
+                        size="lg"
+                        variant="outline"
+                      >
                         <MessageCircle className="mr-2 h-4 w-4" />
                         Biz bilan bog'lanish
                       </Button>
@@ -393,8 +399,8 @@ export default function PricingPage() {
       {/* FAQ Section */}
       <section className="scroll-animate bg-muted/20 px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-8 sm:mb-12 text-center px-2">
-            <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold">
+          <div className="mb-8 px-2 text-center sm:mb-12">
+            <h2 className="mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl md:text-4xl">
               Tez-tez so'raladigan savollar
             </h2>
           </div>
@@ -446,23 +452,27 @@ export default function PricingPage() {
       <section className="scroll-animate-scale px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-4xl">
           <Card className="border-primary/30 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20">
-            <CardHeader className="text-center p-6 sm:p-8">
-              <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold">
+            <CardHeader className="p-6 text-center sm:p-8">
+              <CardTitle className="text-2xl font-bold sm:text-3xl md:text-4xl">
                 Hozir boshlang!
               </CardTitle>
-              <CardDescription className="text-sm sm:text-base md:text-lg mt-2">
+              <CardDescription className="mt-2 text-sm sm:text-base md:text-lg">
                 Bepul shablondan boshlang va faqat ishlatgan resurslarga to'lang
               </CardDescription>
             </CardHeader>
-            <CardFooter className="flex flex-col gap-3 sm:gap-4 sm:flex-row p-6 sm:p-8 pt-0">
-              <Link href="/template" className="flex-1 w-full sm:w-auto">
+            <CardFooter className="flex flex-col gap-3 p-6 pt-0 sm:flex-row sm:gap-4 sm:p-8">
+              <Link href="/template" className="w-full flex-1 sm:w-auto">
                 <Button className="w-full text-sm sm:text-base" size="lg">
                   Shablonlarni ko'rish
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/contact" className="flex-1 w-full sm:w-auto">
-                <Button className="w-full text-sm sm:text-base" size="lg" variant="outline">
+              <Link href="/contact" className="w-full flex-1 sm:w-auto">
+                <Button
+                  className="w-full text-sm sm:text-base"
+                  size="lg"
+                  variant="outline"
+                >
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Biz bilan bog'lanish
                 </Button>
@@ -474,4 +484,3 @@ export default function PricingPage() {
     </main>
   );
 }
-

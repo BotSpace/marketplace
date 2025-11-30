@@ -12,5 +12,9 @@ export async function generateMetadata({
 }
 
 export default function Home() {
-  return <HomeClient />;
+  return (
+    <>
+      <HomeClient />
+    </>
+  );
 }
