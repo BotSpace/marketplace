@@ -140,6 +140,21 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        {/* <script src="https://cdn.amplitude.com/script/ff8831d0855850847390cb3b8473fad3.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('ff8831d0855850847390cb3b8473fad3', {"fetchRemoteConfig":true,"autocapture":true});</script> */}
+
+        <Script
+          id="amplitude-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+              window.amplitude.init('ff8831d0855850847390cb3b8473fad3', {"autocapture":{"elementInteractions":true}});
+            `,
+          }}
+        />
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
