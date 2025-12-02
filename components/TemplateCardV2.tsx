@@ -88,7 +88,7 @@ export default function TemplateCardV2(template: TemplateListType) {
 
           {/* Call to Action Button */}
           <Link
-            href={`/template/${template.slug}`}
+            href={`/templates/${template.slug}`}
             className="block w-full rounded-lg bg-gradient-to-r from-blue-500 to-cyan-400 py-2.5 text-center text-xs font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-blue-600 hover:to-cyan-500 hover:shadow-xl active:scale-95 sm:py-3 sm:text-sm md:text-base"
           >
             Botni sinab ko'rish

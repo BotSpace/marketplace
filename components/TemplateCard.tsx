@@ -50,7 +50,7 @@ export const TemplateCard = (template: TemplateListType) => {
               {formatCurrency(+template.original_price)}
             </span>
           </div>
-          <Link href={`/template/${template.id}`}>
+          <Link href={`/templates/${template.id}`}>
             <Button size="sm" className="group-hover:shadow-md">
               Ko'rish
               <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />

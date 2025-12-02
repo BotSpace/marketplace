@@ -14,6 +14,7 @@ import { Footer } from "@/components/Footer";
 import AuthProvider from "./AuthProvider";
 import ReactQueryProvider from "./ReactQueryProvider";
 import { Toaster } from "react-hot-toast";
+import Analytics from "@/components/analitics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -141,18 +142,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        {/* <script src="https://cdn.amplitude.com/script/ff8831d0855850847390cb3b8473fad3.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('ff8831d0855850847390cb3b8473fad3', {"fetchRemoteConfig":true,"autocapture":true});</script> */}
-
-        <Script
-          id="amplitude-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
-              window.amplitude.init('ff8831d0855850847390cb3b8473fad3', {"autocapture":{"elementInteractions":true}});
-            `,
-          }}
-        />
+        <Analytics />
       </head>
 
       <body

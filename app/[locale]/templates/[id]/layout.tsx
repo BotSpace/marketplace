@@ -7,7 +7,7 @@ async function getTemplate(id: string) {
     const response = await fetch(`${apiUrl}/api/template/${id}`, {
       next: { revalidate: 3600 }, // Revalidate every hour
     });
-    
+
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -15,7 +15,7 @@ async function getTemplate(id: string) {
   } catch (error) {
     console.error("Error fetching template:", error);
   }
-  
+
   return null;
 }
 
@@ -26,17 +26,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, id } = await params;
   const template = await getTemplate(id);
-  
+
   if (template?.data) {
     return generateTemplateDetailMetadata(locale, {
       id: template.data.id,
       name: template.data.name,
-      description: template.data.description || template.data.short_description || "",
+      description:
+        template.data.description || template.data.short_description || "",
       category: template.data.category?.name,
       price: template.data.price,
     });
   }
-  
+
   // Fallback metadata
   return {
     title: "Template - BotMather",
@@ -51,4 +52,3 @@ export default function TemplateDetailLayout({
 }) {
   return children;
 }
-

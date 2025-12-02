@@ -5,7 +5,7 @@ const basePath = "/website";
 
 export function generateHomeMetadata(locale: string): Metadata {
   const localePath = locale === "uz" ? "" : `/${locale}`;
-  
+
   return {
     title: "BotMather - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
     description:
@@ -25,7 +25,7 @@ export function generateHomeMetadata(locale: string): Metadata {
 
 export function generateTemplatesMetadata(locale: string): Metadata {
   const localePath = locale === "uz" ? "" : `/${locale}`;
-  
+
   return {
     title: "Telegram Bot Shablonlari - 100+ Tayyor Shablonlar",
     description:
@@ -60,14 +60,16 @@ export function generateTemplateDetailMetadata(
     description: string;
     category?: string;
     price?: number;
-  }
+  },
 ): Metadata {
   const localePath = locale === "uz" ? "" : `/${locale}`;
-  const url = `${baseUrl}${basePath}${localePath}/template/${template.id}`;
-  
+  const url = `${baseUrl}${basePath}${localePath}/templates/${template.id}`;
+
   return {
     title: `${template.name} - Telegram Bot Shabloni | BotMather`,
-    description: template.description || `${template.name} - Telegram bot shabloni. Kod yozmasdan botingizni yarating.`,
+    description:
+      template.description ||
+      `${template.name} - Telegram bot shabloni. Kod yozmasdan botingizni yarating.`,
     keywords: [
       template.name,
       "telegram bot",
@@ -77,7 +79,8 @@ export function generateTemplateDetailMetadata(
     ].filter(Boolean),
     openGraph: {
       title: `${template.name} - Telegram Bot Shabloni`,
-      description: template.description || `${template.name} Telegram bot shabloni`,
+      description:
+        template.description || `${template.name} Telegram bot shabloni`,
       url,
       type: "website",
       images: [
@@ -92,7 +95,8 @@ export function generateTemplateDetailMetadata(
     twitter: {
       card: "summary_large_image",
       title: `${template.name} - Telegram Bot Shabloni`,
-      description: template.description || `${template.name} Telegram bot shabloni`,
+      description:
+        template.description || `${template.name} Telegram bot shabloni`,
       images: [`${baseUrl}${basePath}/templates/${template.id}.jpg`],
     },
     alternates: {
@@ -103,7 +107,7 @@ export function generateTemplateDetailMetadata(
 
 export function generatePricingMetadata(locale: string): Metadata {
   const localePath = locale === "uz" ? "" : `/${locale}`;
-  
+
   return {
     title: "Narxlar - Pay-per-use va Enterprise | BotMather",
     description:
@@ -130,7 +134,7 @@ export function generatePricingMetadata(locale: string): Metadata {
 
 export function generateContactMetadata(locale: string): Metadata {
   const localePath = locale === "uz" ? "" : `/${locale}`;
-  
+
   return {
     title: "Bog'lanish - BotMather",
     description:
@@ -146,4 +150,3 @@ export function generateContactMetadata(locale: string): Metadata {
     },
   };
 }
-

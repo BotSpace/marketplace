@@ -69,7 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const isDefault = locale === localeConfig.defaultLocale;
       // Default locale uchun locale yo'q, boshqa tillar uchun locale basePath dan oldin
       const localePrefix = isDefault ? "" : `/${locale}`;
-      const path = `${baseUrl}${localePrefix}${basePath}/template/${template.id}`;
+      const path = `${baseUrl}${localePrefix}${basePath}/templates/${template.id}`;
 
       return {
         url: path,
