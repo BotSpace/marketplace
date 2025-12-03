@@ -1,4 +1,4 @@
-# robots.txt for BotMather Marketplace
+# robots.txt for BotMother Marketplace
 
 User-agent: *
 Allow: /

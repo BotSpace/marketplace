@@ -40,7 +40,7 @@ export async function generateMetadata({
 
   // Fallback metadata
   return {
-    title: "Template - BotMather",
+    title: "Template - BotMother",
     description: "Telegram bot shabloni",
   };
 }

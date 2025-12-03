@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(`${baseUrl}${basePath}`),
   title: {
     default:
-      "BotMather - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
-    template: "%s | BotMather",
+      "BotMother - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
+    template: "%s | BotMother",
   },
   description:
     "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring. E-commerce, CRM, Support bot va boshqa 100+ tayyor shablonlar.",
@@ -52,15 +52,15 @@ export const metadata: Metadata = {
     "support bot",
     "telegram bot builder",
     "no-code bot",
-    "botmather",
+    "botmother",
     "telegram botlar",
     "bot platformasi",
     "uzbekistan",
     "bot yaratish platformasi",
   ],
-  authors: [{ name: "BotMather" }],
-  creator: "BotMather",
-  publisher: "BotMather",
+  authors: [{ name: "BotMother" }],
+  creator: "BotMother",
+  publisher: "BotMother",
   formatDetection: {
     email: false,
     address: false,
@@ -70,8 +70,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "uz_UZ",
     url: `${baseUrl}${basePath}`,
-    siteName: "BotMather",
-    title: "BotMather - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
+    siteName: "BotMother",
+    title: "BotMother - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
     description:
       "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
     images: [
@@ -79,17 +79,17 @@ export const metadata: Metadata = {
         url: `${baseUrl}${basePath}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "BotMather - Telegram Bot Constructor",
+        alt: "BotMother - Telegram Bot Constructor",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BotMather - Telegram Bot Constructor",
+    title: "BotMother - Telegram Bot Constructor",
     description:
       "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
     images: [`${baseUrl}${basePath}/og-image.jpg`],
-    creator: "@botmather",
+    creator: "@botmother",
   },
   robots: {
     index: true,
@@ -171,7 +171,7 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              name: "BotMather",
+              name: "BotMother",
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
               offers: {
@@ -199,14 +199,14 @@ export default async function RootLayout({
               url: `${baseUrl}${basePath}`,
               author: {
                 "@type": "Organization",
-                name: "BotMather",
+                name: "BotMother",
                 url: `${baseUrl}${basePath}`,
                 logo: `${baseUrl}${basePath}/logo.png`,
                 contactPoint: {
                   "@type": "ContactPoint",
                   telephone: "+998-50-713-70-30",
                   contactType: "Customer Service",
-                  email: "info@botmather.uz",
+                  email: "info@botmother.uz",
                   availableLanguage: ["Uzbek", "English", "Russian"],
                 },
               },
@@ -228,7 +228,7 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "BotMather",
+              name: "BotMother",
               url: `${baseUrl}${basePath}`,
               logo: `${baseUrl}${basePath}/logo.png`,
               description:
@@ -241,13 +241,13 @@ export default async function RootLayout({
                 "@type": "ContactPoint",
                 telephone: "+998-50-713-70-30",
                 contactType: "Customer Service",
-                email: "info@botmather.uz",
+                email: "info@botmother.uz",
                 availableLanguage: ["Uzbek", "English", "Russian"],
                 areaServed: "UZ",
               },
               sameAs: [
-                "https://facebook.com/botmather",
-                "https://t.me/botmather",
+                "https://facebook.com/botmother",
+                "https://t.me/botmother",
               ],
               aggregateRating: {
                 "@type": "AggregateRating",
@@ -266,12 +266,12 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Product",
-              name: "BotMather - Telegram Bot Constructor",
+              name: "BotMother - Telegram Bot Constructor",
               description:
                 "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
               brand: {
                 "@type": "Brand",
-                name: "BotMather",
+                name: "BotMother",
               },
               aggregateRating: {
                 "@type": "AggregateRating",
@@ -289,7 +289,7 @@ export default async function RootLayout({
                   },
                   datePublished: "2024-12-15",
                   reviewBody:
-                    "BotMather bilan 2 kundan keyin sot botni ishga tushirdim. Juda oson va qulay! Kod yozmasdan professional bot yaratdim. Rahmat BotMather jamoasiga!",
+                    "BotMother bilan 2 kundan keyin sot botni ishga tushirdim. Juda oson va qulay! Kod yozmasdan professional bot yaratdim. Rahmat BotMother jamoasiga!",
                   reviewRating: {
                     "@type": "Rating",
                     ratingValue: "5",

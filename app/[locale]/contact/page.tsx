@@ -124,15 +124,15 @@ export default function Contact() {
   return (
     <main className="flex flex-col overflow-hidden">
       {/* Hero Section */}
-      <section className="relative flex min-h-[50vh] sm:min-h-[60vh] items-center justify-center overflow-hidden px-4 py-12 sm:py-20">
+      <section className="relative flex min-h-[50vh] items-center justify-center overflow-hidden px-4 py-12 sm:min-h-[60vh] sm:py-20">
         {/* Background gradient */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute -top-40 right-0 h-80 w-80 rounded-full bg-primary/10 blur-3xl"></div>
           <div className="absolute -bottom-40 left-0 h-80 w-80 rounded-full bg-accent/10 blur-3xl"></div>
         </div>
 
-        <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8 text-center px-2">
-          <div className="inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-primary">
+        <div className="mx-auto max-w-4xl space-y-6 px-2 text-center sm:space-y-8">
+          <div className="inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary sm:px-4 sm:py-2 sm:text-sm">
             <span className="inline-flex items-center gap-1.5 sm:gap-2">
               <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               Biz bilan bog'laning
@@ -141,7 +141,7 @@ export default function Contact() {
 
           <BlurText
             as="h1"
-            className="text-balance text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight px-2"
+            className="text-balance px-2 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-6xl"
             delay={100}
             blurAmount={8}
           >
@@ -152,11 +152,11 @@ export default function Contact() {
           </BlurText>
 
           <BlurText
-            className="mx-auto max-w-2xl text-balance text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-muted-foreground px-4"
+            className="mx-auto max-w-2xl text-balance px-4 text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg lg:text-xl"
             delay={300}
             blurAmount={6}
           >
-            BotMather jamoasi har doim sizning yardamingizga tayyor. Istalgan
+            BotMother jamoasi har doim sizning yardamingizga tayyor. Istalgan
             savolni yozing va biz tezda javob beramiz.
           </BlurText>
         </div>
@@ -235,11 +235,17 @@ export default function Contact() {
       {/* Contact Form Section */}
       <section className="scroll-animate bg-muted/20 px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-2xl">
-          <div className="mb-8 sm:mb-12 space-y-3 sm:space-y-4 text-center px-2">
-            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
+          <div className="mb-8 space-y-3 px-2 text-center sm:mb-12 sm:space-y-4">
+            <BlurText
+              className="text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl"
+              delay={200}
+            >
               Xabar yuboring
             </BlurText>
-            <BlurText className="text-base sm:text-lg text-muted-foreground px-4" delay={400}>
+            <BlurText
+              className="px-4 text-base text-muted-foreground sm:text-lg"
+              delay={400}
+            >
               Quyidagi formani to'ldiring va biz tezda javob beramiz
             </BlurText>
           </div>
@@ -249,7 +255,7 @@ export default function Contact() {
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary opacity-0 blur transition-opacity duration-500 group-hover:opacity-30"></div>
 
             {/* Form Container */}
-            <div className="relative space-y-6 overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8 md:p-12 shadow-2xl transition-all duration-500 hover:border-primary/50">
+            <div className="relative space-y-6 overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-2xl transition-all duration-500 hover:border-primary/50 sm:p-8 md:p-12">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   {/* Name Field */}
@@ -338,10 +344,10 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 w-full sm:w-auto"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
                   >
                     {isSubmitting ? "Jo'natilmoqda..." : "Xabar jo'natish"}
-                    <Send className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+                    <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 sm:h-5 sm:w-5" />
                   </button>
 
                   {/* Status Messages */}
@@ -366,11 +372,17 @@ export default function Contact() {
       {/* Social Links Section */}
       <section className="scroll-animate px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-8 sm:mb-12 flex-col flex space-y-3 sm:space-y-4 text-center px-2">
-            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
+          <div className="mb-8 flex flex-col space-y-3 px-2 text-center sm:mb-12 sm:space-y-4">
+            <BlurText
+              className="text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl"
+              delay={200}
+            >
               Bizni kuzatib turing
             </BlurText>
-            <BlurText className="text-base sm:text-lg text-muted-foreground px-4" delay={400}>
+            <BlurText
+              className="px-4 text-base text-muted-foreground sm:text-lg"
+              delay={400}
+            >
               Ijtimoiy tarmoqlarimizda so'nggi yangilanishlarni bilib oling
             </BlurText>
           </div>
@@ -444,8 +456,11 @@ export default function Contact() {
       {/* FAQ Section */}
       <section className="scroll-animate bg-muted/20 px-4 py-12 sm:py-20">
         <div className="mx-auto max-w-2xl">
-          <div className="mb-8 sm:mb-12 space-y-3 sm:space-y-4 text-center px-2">
-            <BlurText className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" delay={200}>
+          <div className="mb-8 space-y-3 px-2 text-center sm:mb-12 sm:space-y-4">
+            <BlurText
+              className="text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl"
+              delay={200}
+            >
               Tez-tez so'raladigan savollar
             </BlurText>
           </div>
@@ -459,13 +474,11 @@ export default function Contact() {
               },
               {
                 question: `Narxlaringiz qanday aniqlanadi? "Resurs iste'moli" nima degani?`,
-                answer:
-                  `"Resurs iste'moli" bu botingiz qancha xabar qabul qilgani, qancha ma'lumot saqlagani va ishlashi uchun qancha server kuchi ishlatganini anglatadi. Bizning narxlashimiz shaffof va adolatli. Sizga maxsus Narx Kalkulyatorimiz orqali oyiga taxminiy xarajatni oldindan hisoblash imkoniyatini beramiz.`,
+                answer: `"Resurs iste'moli" bu botingiz qancha xabar qabul qilgani, qancha ma'lumot saqlagani va ishlashi uchun qancha server kuchi ishlatganini anglatadi. Bizning narxlashimiz shaffof va adolatli. Sizga maxsus Narx Kalkulyatorimiz orqali oyiga taxminiy xarajatni oldindan hisoblash imkoniyatini beramiz.`,
               },
               {
                 question: `Bepul sinov muddati yoki "Freemium" rejasi bormi?`,
-                answer:
-                  `Ha. Siz barcha template'larimizni ko'rishingiz, tanlashingiz va cheklangan imkoniyatlar (masalan, oyiga 100 ta xabar) bilan bepul sinov rejimida ishga tushirishingiz mumkin. Bu sizga tizimimizning qanchalik oson va samarali ekanligini sinab ko'rish imkonini beradi.`,
+                answer: `Ha. Siz barcha template'larimizni ko'rishingiz, tanlashingiz va cheklangan imkoniyatlar (masalan, oyiga 100 ta xabar) bilan bepul sinov rejimida ishga tushirishingiz mumkin. Bu sizga tizimimizning qanchalik oson va samarali ekanligini sinab ko'rish imkonini beradi.`,
               },
               {
                 question: "Men kodlashni bilmayman. Bot yarata olamanmi?",
@@ -478,12 +491,14 @@ export default function Contact() {
                   "Agar template'lardan foydalansangiz, template'ni tanlash, o'zgartirish va ishga tushirish uchun 10 daqiqadan 1 soatgacha vaqt ketadi. Dasturchiga buyurtma berishdan ko'ra ancha tez!",
               },
               {
-                question: "O'zim yaratgan botni keyinchalik qanday o'zgartirishim mumkin?",
+                question:
+                  "O'zim yaratgan botni keyinchalik qanday o'zgartirishim mumkin?",
                 answer:
                   "Botingizni o'zgartirish uchun dasturchi kerak emas. Siz istagan vaqtda Constructor interfeysiga kirib, o'zgarishlarni kiritishingiz va darhol ishga tushirishingiz mumkin.",
               },
               {
-                question: "Yaratilgan botlar Telegramning barcha xavfsizlik talablariga javob beradimi?",
+                question:
+                  "Yaratilgan botlar Telegramning barcha xavfsizlik talablariga javob beradimi?",
                 answer:
                   "Ha, bizning platformamizda yaratilgan barcha botlar Telegramning API'lari orqali ishlaydi va Telegramning xavfsizlik standartlariga to'liq rioya qiladi. Ma'lumotlaringiz xavfsiz serverlarda saqlanadi.",
               },
@@ -493,22 +508,26 @@ export default function Contact() {
                   "Agar tayyor template'lardan hech biri to'liq mos kelmasa, siz biz bilan aloqaga chiqishingiz mumkin! Biz siz uchun vaqt ajratamiz va bunga haq olmaymi yoki bunday holatlarda siz bizni AI agentimizda foydalanishingiz mumkin bo'ladi",
               },
               {
-                question: "Botni tashqi tizimlar (CRM, To'lovlar, Google Sheets) bilan ulash mumkinmi?",
+                question:
+                  "Botni tashqi tizimlar (CRM, To'lovlar, Google Sheets) bilan ulash mumkinmi?",
                 answer:
                   "Ha! BotMother.uz asosiy CRM'lar, shuningdek, mahalliy to'lov tizimlari (Payme, Click) va Google Sheets kabi muhim xizmatlar bilan oson integratsiyalarni qo'llab-quvvatlaydi.",
               },
               {
-                question: "Template yaratuvchilar (Dasturchilar) sifatida siz bilan qanday hamkorlik qilishimiz mumkin?",
+                question:
+                  "Template yaratuvchilar (Dasturchilar) sifatida siz bilan qanday hamkorlik qilishimiz mumkin?",
                 answer:
                   "Template yaratuvchilar (Dasturchilar) sifatida siz bilan qanday hamkorlik qilishimiz mumkin?",
               },
               {
-                question: "Agar botni ishga tushirishda muammo bo'lsa, kimga murojaat qilishim kerak?",
+                question:
+                  "Agar botni ishga tushirishda muammo bo'lsa, kimga murojaat qilishim kerak?",
                 answer:
                   "Bizning platformada qadam-baqadam video qo'llanmalar va to'liq hujjatlar mavjud. Agar muammo hal bo'lmasa, siz bizning tezkor Yordam (Support) jamoamizga murojaat qilishingiz mumkin.",
               },
               {
-                question: "Ma'lumotlarim (mijozlarim ma'lumotlari) qayerda saqlanadi?",
+                question:
+                  "Ma'lumotlarim (mijozlarim ma'lumotlari) qayerda saqlanadi?",
                 answer:
                   "Barcha ma'lumotlar xavfsiz va ishonchli serverlarda saqlanadi. Biz ma'lumotlaringizning xavfsizligini ta'minlash uchun barcha kerakli choralar ko'rilishiga kafolat beramiz.",
               },
@@ -532,7 +551,7 @@ export default function Contact() {
                 key={idx}
                 className="group rounded-lg border border-border/60 bg-gradient-to-br from-card to-card/90 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
               >
-                <summary className="flex cursor-pointer items-center justify-between p-4 sm:p-6 text-sm sm:text-base font-semibold text-foreground transition-colors hover:text-primary">
+                <summary className="flex cursor-pointer items-center justify-between p-4 text-sm font-semibold text-foreground transition-colors hover:text-primary sm:p-6 sm:text-base">
                   <span className="pr-4">{faq.question}</span>
                   <span className="flex-shrink-0 transition-transform group-open:rotate-180">
                     <svg
@@ -550,7 +569,7 @@ export default function Contact() {
                     </svg>
                   </span>
                 </summary>
-                <div className="border-t border-border/40 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-muted-foreground">
+                <div className="border-t border-border/40 px-4 py-3 text-sm text-muted-foreground sm:px-6 sm:py-4 sm:text-base">
                   {faq.answer}
                 </div>
               </details>

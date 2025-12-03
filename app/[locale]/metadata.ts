@@ -7,11 +7,11 @@ export function generateHomeMetadata(locale: string): Metadata {
   const localePath = locale === "uz" ? "" : `/${locale}`;
 
   return {
-    title: "BotMather - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
+    title: "BotMother - Telegram Bot Constructor | Kod Yozmasdan Bot Yaratish",
     description:
       "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring. 100+ tayyor shablonlar, pay-per-use narx modeli.",
     openGraph: {
-      title: "BotMather - Telegram Bot Constructor",
+      title: "BotMother - Telegram Bot Constructor",
       description:
         "Kod yozmasdan Telegram botlarini yarating. Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.",
       url: `${baseUrl}${basePath}${localePath}`,
@@ -40,7 +40,7 @@ export function generateTemplatesMetadata(locale: string): Metadata {
       "telegram botlar",
     ],
     openGraph: {
-      title: "Telegram Bot Shablonlari - BotMather",
+      title: "Telegram Bot Shablonlari - BotMother",
       description:
         "100+ tayyor Telegram bot shablonlari. Kod yozmasdan botingizni yarating.",
       url: `${baseUrl}${basePath}${localePath}/template`,
@@ -66,7 +66,7 @@ export function generateTemplateDetailMetadata(
   const url = `${baseUrl}${basePath}${localePath}/templates/${template.id}`;
 
   return {
-    title: `${template.name} - Telegram Bot Shabloni | BotMather`,
+    title: `${template.name} - Telegram Bot Shabloni | BotMother`,
     description:
       template.description ||
       `${template.name} - Telegram bot shabloni. Kod yozmasdan botingizni yarating.`,
@@ -75,7 +75,7 @@ export function generateTemplateDetailMetadata(
       "telegram bot",
       "bot shabloni",
       template.category || "",
-      "botmather",
+      "botmother",
     ].filter(Boolean),
     openGraph: {
       title: `${template.name} - Telegram Bot Shabloni`,
@@ -109,18 +109,18 @@ export function generatePricingMetadata(locale: string): Metadata {
   const localePath = locale === "uz" ? "" : `/${locale}`;
 
   return {
-    title: "Narxlar - Pay-per-use va Enterprise | BotMather",
+    title: "Narxlar - Pay-per-use va Enterprise | BotMother",
     description:
       "Adolatli pay-per-use narx modeli. Faqat ishlatgan resurslarga to'lang. Hech qanday yashirin xarajatlar yo'q. Enterprise yechimlar ham mavjud.",
     keywords: [
-      "botmather narx",
+      "botmother narx",
       "telegram bot narxi",
       "pay-per-use",
       "enterprise bot",
       "bot narxlari",
     ],
     openGraph: {
-      title: "Narxlar - BotMather",
+      title: "Narxlar - BotMother",
       description:
         "Adolatli pay-per-use narx modeli. Faqat ishlatgan resurslarga to'lang.",
       url: `${baseUrl}${basePath}${localePath}/price`,
@@ -136,12 +136,12 @@ export function generateContactMetadata(locale: string): Metadata {
   const localePath = locale === "uz" ? "" : `/${locale}`;
 
   return {
-    title: "Bog'lanish - BotMather",
+    title: "Bog'lanish - BotMother",
     description:
-      "BotMather jamoasi bilan bog'laning. Savollaringizga javob oling, maxsus yechimlar haqida ma'lumot oling.",
+      "BotMother jamoasi bilan bog'laning. Savollaringizga javob oling, maxsus yechimlar haqida ma'lumot oling.",
     openGraph: {
-      title: "Bog'lanish - BotMather",
-      description: "BotMather jamoasi bilan bog'laning",
+      title: "Bog'lanish - BotMother",
+      description: "BotMother jamoasi bilan bog'laning",
       url: `${baseUrl}${basePath}${localePath}/contact`,
       type: "website",
     },

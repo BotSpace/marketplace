@@ -74,7 +74,7 @@ export function OtpAuthDialog({ logo, children }: OtpAuthDialogProps) {
               />
             )}
             <AlertDialogTitle className="text-xl">
-              Botmather hisobiga kirish
+              BotMother hisobiga kirish
             </AlertDialogTitle>
             <AlertDialogDescription className="text-sm">
               Kirish uchun Telegram botimizdan 6 xonali kod oling.

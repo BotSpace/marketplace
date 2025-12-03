@@ -141,7 +141,7 @@ export function Navigation({}: Props) {
           href="/"
           className="flex items-center space-x-2 text-xl font-bold"
         >
-          <span>BotMather</span>
+          <span>BotMother</span>
         </Link>
 
         <div className="flex gap-2">

@@ -182,7 +182,7 @@ export default function HomeClient() {
             delay={300}
             blurAmount={6}
           >
-            BotMather bilan kod yozmasdan Telegram botlarini yarating.
+            BotMother bilan kod yozmasdan Telegram botlarini yarating.
             Tayyorlangan shablonlardan foydalanib 5 daqiqada ishga tushiring.
             Faqat ishlatgan resurslarga to'lag'ini qiling — eng adolatli narx
             modeli.
@@ -384,7 +384,7 @@ export default function HomeClient() {
               className="text-xl font-bold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
               delay={200}
             >
-              Nega BotMather ni tanlash kerak?
+              Nega BotMother ni tanlash kerak?
             </BlurText>
             <BlurText
               className="px-2 text-sm text-muted-foreground sm:px-4 sm:text-base md:text-lg"
@@ -610,7 +610,7 @@ export default function HomeClient() {
                     name: "Alisher Umarov",
                     role: "E-commerce biznes egasi",
                     feedback:
-                      "BotMather bilan 2 kundan keyin sot botni ishga tushirdim. Juda oson va qulay! Kod yozmasdan professional bot yaratdim. Rahmat BotMather jamoasiga!",
+                      "BotMother bilan 2 kundan keyin sot botni ishga tushirdim. Juda oson va qulay! Kod yozmasdan professional bot yaratdim. Rahmat BotMother jamoasiga!",
                     rating: 5,
                     date: "2024-yil 15-dekabr",
                     verified: true,
@@ -655,7 +655,7 @@ export default function HomeClient() {
                     name: "Sardor Toshmatov",
                     role: "IT kompaniya",
                     feedback:
-                      "CRM bot yaratib, loyihalarimizni boshqarishni osonlashtirdim. BotMather haqiqiy qiymat yaratadi va vaqt tejaydi. Katta rahmat jamoaga!",
+                      "CRM bot yaratib, loyihalarimizni boshqarishni osonlashtirdim. BotMother haqiqiy qiymat yaratadi va vaqt tejaydi. Katta rahmat jamoaga!",
                     rating: 5,
                     date: "2024-yil 25-noyabr",
                     verified: true,
@@ -765,7 +765,7 @@ export default function HomeClient() {
               sahifamizga tashrif buyuring
             </p>
             <a
-              href="https://facebook.com/botmather"
+              href="https://facebook.com/botmother"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-primary/50 bg-primary/10 px-5 py-2.5 text-xs font-semibold text-primary transition-all duration-300 active:scale-[0.98] sm:min-h-0 sm:px-6 sm:py-3 sm:text-sm md:hover:scale-105 md:hover:bg-primary/20 md:hover:shadow-lg"
