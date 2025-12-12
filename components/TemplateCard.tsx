@@ -1,5 +1,6 @@
-import { Bot, ArrowRight, EyeIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Bot, ArrowRight, Heart, Eye, Tag } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -9,30 +10,54 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { TemplateListType } from "@/types/template";
+import Link from "next/link";
 
-export const TemplateCard = (template: TemplateListType) => {
+interface TemplateCardProps {
+  data: TemplateListType;
+}
+
+export const TemplateCard = ({ data }: TemplateCardProps) => {
   return (
-    <Card className="bg-red-3001 group flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
+    <Card className="group flex h-full flex-col overflow-hidden bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
       {/* Template Preview Area */}
-      <div
-        style={{ backgroundImage: `url("${template.image}")` }}
-        className="bg-gradient relative flex aspect-video items-center justify-center overflow-hidden rounded-lg border-b border-border/50 bg-cover bg-center"
-      >
-        <span className="text-md absolute right-3 top-3 rounded-xl bg-yellow-400 p-2 font-bold text-red-700">
-          - {template.discount}
-          {template.discount_type === "percent" ? "%" : "UZS"}
-        </span>
+      <div className="relative flex aspect-video items-center justify-center overflow-hidden border-b border-border/50 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-20" />
+        <img className="relative z-30" src={data.image} alt={data.name} />
       </div>
 
       <CardHeader className="pb-4">
-        <CardTitle className="text-lg font-semibold transition-colors group-hover:text-primary">
-          {template.name}
-        </CardTitle>
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex-1">
+            <CardTitle className="text-lg font-semibold transition-colors group-hover:text-primary">
+              {data.name}
+            </CardTitle>
+            <CardDescription className="line-clamp-2 text-sm"></CardDescription>
+          </div>
+          {data.discount && (
+            <Badge variant="destructive" className="whitespace-nowrap">
+              {data.discount_type === "percent"
+                ? `${data.discount}%`
+                : data.discount}
+            </Badge>
+          )}
+        </div>
+
+        {/* Categories */}
+        {data.categories && data.categories.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-1">
+            {data.categories.slice(0, 2).map((category) => (
+              <Badge key={category.id} variant="outline" className="text-xs">
+                <Tag className="mr-1 h-3 w-3" />
+                {category.name}
+              </Badge>
+            ))}
+          </div>
+        )}
       </CardHeader>
 
       <CardContent className="flex-1 pb-4">
         <ul className="space-y-2">
-          {template.features.slice(0, 4).map((feature, idx) => (
+          {data.features.slice(0, 4).map((feature, idx) => (
             <li key={idx} className="flex items-start gap-2 text-sm">
               <span className="text-muted-foreground">{feature.name}</span>
             </li>
@@ -40,70 +65,35 @@ export const TemplateCard = (template: TemplateListType) => {
         </ul>
       </CardContent>
 
-      <CardFooter className="flex flex-col">
-        <div className="flex w-full items-center justify-between border-t border-border/50 pt-4">
-          <div className="flex flex-col">
-            <span className="text-2xl font-bold text-blue-600">
-              {formatCurrency(+template.price)}
-            </span>
-            <span className="ml-1 text-[16px] text-muted-foreground line-through">
-              {formatCurrency(+template.original_price)}
-            </span>
+      <CardFooter className="flex flex-col gap-4 border-t border-border/50 pt-4">
+        {/* Stats Row */}
+        <div className="flex w-full items-center justify-between text-xs text-muted-foreground">
+          <div className="flex items-center gap-1">
+            <Eye className="h-4 w-4" />
+            <span>{data.views}</span>
           </div>
-          <Link href={`/templates/${template.id}`}>
-            <Button size="sm" className="group-hover:shadow-md">
-              Ko'rish
-              <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Button>
+          <div className="flex items-center gap-1">
+            <Heart className="h-4 w-4" />
+            <span>{data.likes}</span>
+          </div>
+        </div>
+
+        {/* Price Row */}
+        <div className="flex w-full items-center justify-between">
+          <div className="flex items-baseline gap-2">
+            <span className="text-2xl font-bold">{data.price}</span>
+            {data.original_price && (
+              <span className="text-sm text-muted-foreground line-through">
+                {data.original_price}
+              </span>
+            )}
+            <span className="text-xs text-muted-foreground">bir marta</span>
+          </div>
+          <Link href={`/templates/${data.slug}`} className={buttonVariants()}>
+            Ko'rish
+            <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
-        <div className="flex w-full items-center gap-2">
-          <EyeIcon size={20} />
-          {template.views}
-        </div>
-      </CardFooter>
-    </Card>
-  );
-};
-
-import { Skeleton } from "@/components/ui/skeleton";
-import { formatCurrency } from "@/lib/format-currency";
-import Link from "next/link";
-
-export const TemplateCardSkeleton = () => {
-  return (
-    <Card className="flex h-full flex-col overflow-hidden bg-card">
-      {/* Preview area */}
-      <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-lg border-b border-border/50 bg-muted">
-        <Skeleton className="absolute right-3 top-3 h-5 w-12 rounded-full" />
-      </div>
-
-      <CardHeader className="pb-4">
-        <CardTitle>
-          <Skeleton className="h-5 w-32 rounded-md" />
-        </CardTitle>
-        <CardDescription>
-          <Skeleton className="mt-2 h-4 w-full rounded-md" />
-          <Skeleton className="mt-1 h-4 w-3/4 rounded-md" />
-        </CardDescription>
-      </CardHeader>
-
-      <CardContent className="flex-1 pb-4">
-        <ul className="space-y-2">
-          {[...Array(4)].map((_, idx) => (
-            <li key={idx} className="flex items-start gap-2">
-              <Skeleton className="h-3 w-24 rounded-md" />
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-
-      <CardFooter className="flex items-center justify-between border-t border-border/50 pt-4">
-        <div className="flex flex-col gap-1">
-          <Skeleton className="h-6 w-16 rounded-md" />
-          <Skeleton className="h-3 w-10 rounded-md" />
-        </div>
-        <Skeleton className="h-8 w-20 rounded-lg" />
       </CardFooter>
     </Card>
   );

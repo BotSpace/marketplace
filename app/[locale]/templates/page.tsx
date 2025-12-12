@@ -1,18 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Search, Filter, X } from "lucide-react";
-import { TemplateCardSkeleton } from "@/components/TemplateCard";
-import { BlurText } from "@/components/blur-text";
-import { Input } from "@/components/ui/input";
+import { TemplateCard } from "@/components/TemplateCard";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Bot, Search, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useReactQueryAction } from "@/services/use-react-query-action";
-import { APIListResponse } from "@/types/http";
 import { Category, Feature, TemplateListType } from "@/types/template";
-import { Skeleton } from "@/components/ui/skeleton";
-import TemplateCardV2 from "@/components/TemplateCardV2";
+import { APIListResponse } from "@/types/http";
 
-export default function TemplatesPage() {
+const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<Category[] | []>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<Feature[] | []>([]);
@@ -29,9 +26,11 @@ export default function TemplatesPage() {
     },
   });
 
-  const { data: category } = useReactQueryAction<APIListResponse<Category[]>>({
-    url: "/api/category",
-  });
+  const { data: categories } = useReactQueryAction<APIListResponse<Category[]>>(
+    {
+      url: "/api/category",
+    },
+  );
 
   const { data: feature } = useReactQueryAction<APIListResponse<Category[]>>({
     url: "/api/feature",
@@ -73,68 +72,48 @@ export default function TemplatesPage() {
   }, [templates]);
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 space-y-4 px-2 text-center sm:mb-12 sm:space-y-6">
-            <BlurText
-              as="h1"
-              className={`text-2xl font-bold sm:text-3xl md:text-4xl lg:text-6xl ${
-                isVisible ? "translate-y-0" : "translate-y-4"
-              }`}
-              delay={100}
-              blurAmount={8}
-            >
-              Telegram bot{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                shablonlari
-              </span>
-            </BlurText>
-            <BlurText
-              className={`mx-auto max-w-2xl px-4 text-sm text-muted-foreground sm:text-base md:text-lg lg:text-xl ${
-                isVisible ? "translate-y-0" : "translate-y-4"
-              }`}
-              delay={300}
-              blurAmount={6}
-            >
-              20K+ tayyorlangan shablonlar. Biznesingiz uchun to'g'ri botni
-              toping va 5 daqiqada ishga tushiring.
-            </BlurText>
-          </div>
+      <section className="border-b border-border/50 bg-gradient-to-b from-background to-muted/20 py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-4xl text-center">
+            <Badge variant="secondary" className="mb-4 px-4 py-1.5">
+              <Bot className="mr-1.5 h-3.5 w-3.5" />
+              Tayyor Telegram Bot Shablonlari
+            </Badge>
 
-          {/* Search Bar */}
-          <div
-            className={`mx-auto max-w-2xl px-2 transition-all delay-300 duration-700 ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-4 opacity-0"
-            }`}
-          >
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground sm:left-4 sm:h-5 sm:w-5" />
-              <Input
-                type="text"
-                placeholder="Shablonlarni qidirish..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-11 rounded-full border-border/50 bg-background/50 pl-10 pr-4 text-sm backdrop-blur-sm transition-all hover:border-primary/50 focus:border-primary sm:h-12 sm:pl-12 sm:text-base"
-              />
+            <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+              Telegram botni{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                sotib oling va ishga tushiring
+              </span>
+            </h1>
+
+            <p className="mb-8 text-lg text-muted-foreground">
+              Biznesingiz uchun tayyor bot shablonlarini tanlang, sotib oling va
+              bir necha soat ichida ishga tushiring
+            </p>
+
+            <div className="mx-auto max-w-md">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  type="text"
+                  placeholder="Shablon qidirish..."
+                  className="w-full rounded-lg border border-border bg-background py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Filters and Templates */}
-      <section className="px-4 py-8 sm:py-12">
-        <div className="mx-auto max-w-7xl">
+      {/* Templates Section with Filters */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
           {/* Category Filters */}
-          <div className="mb-6 flex flex-wrap items-center gap-2 sm:mb-8 sm:gap-3">
-            <div className="mb-2 flex w-full items-center gap-1.5 text-xs font-medium text-muted-foreground sm:mb-0 sm:w-auto sm:gap-2 sm:text-sm">
-              <Filter className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              <span>Kategoriya:</span>
-            </div>
-
+          <div className="overflow-x-auto">
             <Button
               variant={!selectedCategory ? "default" : "outline"}
               size="sm"
@@ -149,8 +128,8 @@ export default function TemplatesPage() {
               Tozalash
             </Button>
 
-            {category ? (
-              category.data.results.map(({ id, name }) => {
+            {categories ? (
+              categories.data.results.map(({ id, name }) => {
                 const isSelected = selectedCategory.some(
                   (cat) => cat.id === id,
                 );
@@ -183,134 +162,59 @@ export default function TemplatesPage() {
               })
             ) : (
               <>
+                {/* <CategoryButtonSkeleton />
                 <CategoryButtonSkeleton />
                 <CategoryButtonSkeleton />
                 <CategoryButtonSkeleton />
-                <CategoryButtonSkeleton />
-                <CategoryButtonSkeleton />
-              </>
-            )}
-          </div>
-
-          {/* Feature */}
-          <div className="mb-6 flex flex-wrap items-center gap-2 sm:mb-8 sm:gap-3">
-            <div className="mb-2 flex w-full items-center gap-1.5 text-xs font-medium text-muted-foreground sm:mb-0 sm:w-auto sm:gap-2 sm:text-sm">
-              <Filter className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              <span>Feature:</span>
-            </div>
-
-            <Button
-              variant={!selectedFeatures ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedCategory([])}
-              className={`rounded-full transition-all ${
-                !selectedFeatures
-                  ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-                  : "hover:border-primary/50"
-              }`}
-            >
-              <X />
-              Tozalash
-            </Button>
-
-            {feature ? (
-              feature.data.results.map(({ id, name }) => {
-                const isSelected = selectedFeatures.some(
-                  (cat) => cat.id === id,
-                );
-                return (
-                  <Button
-                    key={`feature-${id}`}
-                    variant={isSelected ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => {
-                      if (isSelected) {
-                        setSelectedFeatures(
-                          selectedFeatures.filter((cat) => cat.id !== id),
-                        );
-                      } else {
-                        setSelectedFeatures([
-                          ...selectedFeatures,
-                          { id, name },
-                        ]);
-                      }
-                    }}
-                    className={`rounded-full transition-all ${
-                      isSelected
-                        ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-                        : "hover:border-primary/50"
-                    }`}
-                  >
-                    {name}
-                  </Button>
-                );
-              })
-            ) : (
-              <>
-                <CategoryButtonSkeleton />
-                <CategoryButtonSkeleton />
-                <CategoryButtonSkeleton />
-                <CategoryButtonSkeleton />
-                <CategoryButtonSkeleton />
+                <CategoryButtonSkeleton /> */}
               </>
             )}
           </div>
 
           {/* Templates Grid */}
-          {templates ? (
-            templates.data.results.length > 0 ? (
-              <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {templates.data.results.map((template) => {
-                  return (
-                    <div
-                      key={`template-${template.id}`}
-                      className="scroll-animate"
-                      style={{
-                        animation: `slideInUp 0.5s ease-out forwards`,
-                      }}
-                    >
-                      <TemplateCardV2 {...template} />
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="flex min-h-[400px] flex-col items-center justify-center rounded-2xl border border-border/50 bg-muted/20 p-12 text-center">
-                <Search className="mb-4 h-12 w-12 text-muted-foreground/50" />
-                <h3 className="mb-2 text-xl font-semibold">
-                  Shablon topilmadi
-                </h3>
-                <p className="max-w-md text-sm text-muted-foreground">
-                  Qidiruv so'rovingizga mos shablon topilmadi. Boshqa kategoriya
-                  yoki qidiruv so'zini sinab ko'ring.
-                </p>
-                <Button
-                  variant="outline"
-                  className="mt-6"
-                  onClick={() => {
-                    setSearchQuery("");
-                    setSelectedCategory([]);
-                    setSelectedFeatures([]);
-                  }}
-                >
-                  Filtrlarni tozalash
-                </Button>
-              </div>
-            )
-          ) : (
-            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <TemplateCardSkeleton />
-              <TemplateCardSkeleton />
-              <TemplateCardSkeleton />
-              <TemplateCardSkeleton />
-            </div>
-          )}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {templates?.data.results.map((template, idx) => (
+              <TemplateCard key={idx} data={template} />
+            ))}
+          </div>
         </div>
       </section>
-    </main>
-  );
-}
 
-function CategoryButtonSkeleton() {
-  return <Skeleton className="h-8 w-24 rounded-full" />;
-}
+      {/* CTA Section */}
+      <section className="border-t border-border/50 bg-muted/30 py-20">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="mb-4 text-2xl font-bold tracking-tight sm:text-3xl">
+              Telegram bot kerakmi?
+            </h2>
+            <p className="mb-6 text-muted-foreground">
+              Shablonlardan birini tanlang va biznesingizni avtomatlashtirishni
+              boshlang
+            </p>
+            <Button variant="default" size="lg">
+              <Bot className="mr-2 h-5 w-5" />
+              Telegram orqali bog'laning
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border/50 py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <div className="flex items-center gap-2 text-xl font-bold">
+              <Bot className="h-6 w-6 text-primary" />
+              <span>BotTemplates</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              © 2024 BotTemplates. Barcha huquqlar himoyalangan.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Index;

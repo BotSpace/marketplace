@@ -1,92 +1,71 @@
-import type React from "react";
-import Link from "next/link";
+import { Bot, Send, Instagram, Youtube } from "lucide-react";
 
-export function Footer() {
+const Footer = () => {
   return (
-    <footer className="mt-12 border-t border-border/40 bg-muted/30 py-8 sm:mt-20 sm:py-12">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 grid grid-cols-2 gap-6 sm:mb-8 sm:grid-cols-2 sm:gap-8 md:grid-cols-4">
-          <div className="col-span-2 sm:col-span-1">
-            <h3 className="mb-3 text-base font-bold sm:mb-4 sm:text-lg">
-              <span className="text-primary">Bot</span>
-              <span className="text-accent">Mother</span>
-            </h3>
-            <p className="text-xs text-muted-foreground sm:text-sm">
-              Telegram bot constructor without code.
+    <footer className="py-16 border-t border-border bg-card/30">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <a href="#" className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-button">
+                <Bot className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <span className="font-display font-bold text-xl text-foreground">
+                BotBuilder
+              </span>
+            </a>
+            <p className="text-muted-foreground text-sm max-w-sm mb-4">
+              Telegram botlarini kod yozmasdan, vizual konstruktor yordamida yarating. 
+              Biznesingizni avtomatlashtiring.
             </p>
+            <div className="flex items-center gap-3">
+              <a href="#" className="w-10 h-10 rounded-xl bg-muted hover:bg-primary/20 flex items-center justify-center transition-colors">
+                <Send className="w-5 h-5 text-muted-foreground hover:text-primary" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-xl bg-muted hover:bg-primary/20 flex items-center justify-center transition-colors">
+                <Instagram className="w-5 h-5 text-muted-foreground hover:text-primary" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-xl bg-muted hover:bg-primary/20 flex items-center justify-center transition-colors">
+                <Youtube className="w-5 h-5 text-muted-foreground hover:text-primary" />
+              </a>
+            </div>
           </div>
+
+          {/* Links */}
           <div>
-            <h4 className="mb-3 text-sm font-semibold text-foreground sm:mb-4 sm:text-base">
-              Product
-            </h4>
-            <ul className="space-y-1.5 text-xs text-muted-foreground sm:space-y-2 sm:text-sm">
-              <li>
-                <Link
-                  href="/template"
-                  className="transition hover:text-foreground"
-                >
-                  Templates
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/price"
-                  className="transition hover:text-foreground"
-                >
-                  Pricing
-                </Link>
-              </li>
+            <h4 className="font-display font-semibold mb-4">Sahifalar</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Imkoniyatlar</a></li>
+              <li><a href="#templates" className="text-muted-foreground hover:text-foreground transition-colors">Shablonlar</a></li>
+              <li><a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Narxlar</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a></li>
             </ul>
           </div>
+
           <div>
-            <h4 className="mb-3 text-sm font-semibold text-foreground sm:mb-4 sm:text-base">
-              Company
-            </h4>
-            <ul className="space-y-1.5 text-xs text-muted-foreground sm:space-y-2 sm:text-sm">
-              <li>
-                <Link
-                  href="/contact"
-                  className="transition hover:text-foreground"
-                >
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/price"
-                  className="transition hover:text-foreground"
-                >
-                  Qanday ishlaydi
-                </Link>
-              </li>
+            <h4 className="font-display font-semibold mb-4">Yordam</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Qo'llanma</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Aloqa</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Maxfiylik siyosati</a></li>
             </ul>
-          </div>
-          <div className="col-span-2 sm:col-span-1">
-            <h4 className="mb-3 text-sm font-semibold text-foreground sm:mb-4 sm:text-base">
-              Contact
-            </h4>
-            <p className="mb-1.5 text-xs text-muted-foreground sm:mb-2 sm:text-sm">
-              <a
-                href="tel:+998507137030"
-                className="break-all transition hover:text-foreground"
-              >
-                +998 50 713 70 30
-              </a>
-            </p>
-            <p className="text-xs text-muted-foreground sm:text-sm">
-              <a
-                href="mailto:info@botmother.uz"
-                className="break-all transition hover:text-foreground"
-              >
-                info@botmother.uz
-              </a>
-            </p>
           </div>
         </div>
-        <div className="border-t border-border/40 pt-6 text-center text-xs text-muted-foreground sm:pt-8 sm:text-sm">
-          <p>&copy; 2025 BotMother. All rights reserved.</p>
+
+        {/* Bottom */}
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">
+            © 2024 BotBuilder. Barcha huquqlar himoyalangan.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            O'zbekistonda ishlab chiqilgan 🇺🇿
+          </p>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

@@ -7,14 +7,12 @@ import "./globals.css";
 import { getMessages } from "next-intl/server";
 
 import { NextIntlClientProvider } from "next-intl";
-import ThemeProvider from "@/components/theme/theme-provider";
-import { ScrollToTop } from "@/components/scroll-to-top";
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
 import AuthProvider from "./AuthProvider";
 import ReactQueryProvider from "./ReactQueryProvider";
 import { Toaster } from "react-hot-toast";
-import Analytics from "@/components/analitics";
+import ThemeProviderWrapper from "./ThemeProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -141,10 +139,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
-        <Analytics />
-      </head>
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -374,23 +368,19 @@ export default async function RootLayout({
             }),
           }}
         />
-        <NextIntlClientProvider messages={messages}>
-          <ReactQueryProvider>
-            <AuthProvider>
-              <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-              >
-                <Navigation />
+
+        <ThemeProviderWrapper>
+          <NextIntlClientProvider messages={messages}>
+            <ReactQueryProvider>
+              <AuthProvider>
+                <Navbar />
                 {children}
-                <Toaster />
                 <Footer />
-                <ScrollToTop />
-              </ThemeProvider>
-            </AuthProvider>
-          </ReactQueryProvider>
-        </NextIntlClientProvider>
+                <Toaster />
+              </AuthProvider>
+            </ReactQueryProvider>
+          </NextIntlClientProvider>
+        </ThemeProviderWrapper>
         {/* Yandex.Metrika counter - Lazy loaded for better performance */}
         <Script id="yandex-metrika" strategy="lazyOnload">
           {`
