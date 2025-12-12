@@ -9,14 +9,19 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_20px_hsl(199_89%_48%/0.4)] hover:shadow-[0_0_60px_hsl(199_89%_48%/0.3)]",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-border bg-transparent hover:bg-secondary hover:text-secondary-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        default:
+          "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_20px_hsl(199_89%_48%/0.4)] hover:shadow-[0_0_60px_hsl(199_89%_48%/0.3)]",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-border bg-transparent hover:bg-secondary hover:text-secondary-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         hero: "bg-gradient-to-r from-[hsl(199,89%,48%)] to-[hsl(262,83%,58%)] text-[hsl(222,47%,6%)] shadow-[0_4px_20px_hsl(199_89%_48%/0.4)] hover:shadow-[0_0_60px_hsl(199_89%_48%/0.3)] hover:scale-105 active:scale-100",
-        glass: "bg-[hsl(222,47%,9%)]/60 backdrop-blur-xl border border-[hsl(222,30%,18%)]/50 text-[hsl(210,40%,98%)] hover:bg-[hsl(222,47%,9%)]/80 hover:border-[hsl(199,89%,48%)]/50",
+        glass:
+          "bg-[hsl(222,47%,9%)]/60 backdrop-blur-xl border border-[hsl(222,30%,18%)]/50 text-[hsl(210,40%,98%)] hover:bg-[hsl(222,47%,9%)]/80 hover:border-[hsl(199,89%,48%)]/50",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -42,7 +47,13 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
   },
 );
 Button.displayName = "Button";
