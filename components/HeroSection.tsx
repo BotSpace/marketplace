@@ -1,8 +1,12 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const HeroSection = () => {
+  const t = useTranslations("HeroSection");
   return (
     <section className="bg-gradient-hero relative min-h-screen overflow-hidden pb-16 pt-24">
       {/* Background Effects */}
@@ -18,36 +22,35 @@ const HeroSection = () => {
             <div className="glass animate-slide-up inline-flex items-center gap-2 rounded-full px-4 py-2">
               <Sparkles className="h-4 w-4 text-primary" />
               <span className="text-sm text-muted-foreground">
-                Kod yozish 0% • Vizual konstruktor
+                {t("badge")}
               </span>
             </div>
 
             {/* Headline */}
             <h1 className="animate-slide-up font-display text-2xl font-bold leading-tight delay-100 md:text-5xl lg:text-6xl">
-              Telegramda biznesingiz uchun{" "}
-              <span className="text-gradient">istalgan turdagi botni</span>{" "}
-              o'zingiz yarating
+              {t("title")}{" "}
+              <span className="text-gradient">{t("titleHighlight")}</span>{" "}
+              {t("titleEnd")}
             </h1>
 
             {/* Paragraph */}
             <p className="animate-slide-up max-w-xl text-sm text-muted-foreground delay-200 md:text-xl">
-              Tayyor shablonlardan foydalaning yoki vizual konstruktor yordamida
-              o'zingizga mos botni{" "}
-              <span className="font-semibold text-foreground">15 daqiqada</span>{" "}
-              yig'ing. Dasturchi kerak emas.
+              {t("description")}{" "}
+              <span className="font-semibold text-foreground">{t("descriptionHighlight")}</span>{" "}
+              {t("descriptionEnd")}
             </p>
 
             {/* CTA Buttons */}
             <div className="animate-slide-up flex flex-col gap-4 delay-300 sm:flex-row">
               <Button asChild variant="hero" size="xl" className="!text-[#fff]">
                 <Link href={"/templates"}>
-                  Konstruktorni sinab ko'rish
+                  {t("ctaPrimary")}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button variant="glass" size="xl" className="group">
                 <Play className="h-5 w-5 text-primary" />
-                Video ko'rish
+                {t("ctaSecondary")}
               </Button>
             </div>
 
@@ -58,7 +61,7 @@ const HeroSection = () => {
                   50+
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Tayyor shablonlar
+                  {t("statsTemplates")}
                 </div>
               </div>
               <div className="h-12 w-px bg-border" />
@@ -67,7 +70,7 @@ const HeroSection = () => {
                   10k+
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Faol foydalanuvchilar
+                  {t("statsUsers")}
                 </div>
               </div>
               <div className="h-12 w-px bg-border" />
@@ -76,7 +79,7 @@ const HeroSection = () => {
                   99%
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Mijozlar mamnuniyati
+                  {t("statsSatisfaction")}
                 </div>
               </div>
             </div>
@@ -155,8 +158,7 @@ const HeroSection = () => {
 
             {/* Floating Label */}
             <div className="glass animate-fade-in absolute bottom-32 right-0 rounded-lg px-3 py-2 text-xs delay-500 md:right-4">
-              <span className="text-primary">→</span> Noutbukda chizdingiz,
-              Telefonda ishladi
+              <span className="text-primary">→</span> {t("floatingLabel")}
             </div>
           </div>
         </div>

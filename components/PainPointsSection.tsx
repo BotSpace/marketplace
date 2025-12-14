@@ -1,29 +1,28 @@
-import { Clock, ShieldAlert, Users, Wallet } from "lucide-react";
+"use client";
 
-const painPoints = [
-  {
-    icon: Clock,
-    title: "Vaqt yetishmaydi",
-    description: "Dasturchi topish, loyiha tushuntirish, kutish... Oy emas, haftalab ketadi.",
-  },
-  {
-    icon: Wallet,
-    title: "Qimmat turadi",
-    description: "Oddiy bot uchun ham millionlab so'm to'lash kerak bo'ladi.",
-  },
-  {
-    icon: ShieldAlert,
-    title: "Nazorat yo'q",
-    description: "Botni o'zgartirish kerak bo'lsa, yana dasturchiga murojaat qilasiz.",
-  },
-  {
-    icon: Users,
-    title: "Murakkablik",
-    description: "Texnik bilim yo'q, kod tushunarsiz — shunchaki qo'rqinchli.",
-  },
-];
+import { Clock, ShieldAlert, Users, Wallet } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const PainPointsSection = () => {
+  const t = useTranslations("PainPointsSection");
+
+  const painPoints = [
+    {
+      icon: Clock,
+      title: t("point1Title"),
+      description: t("point1Description"),
+    },
+    {
+      icon: Wallet,
+      title: t("point2Title"),
+      description: t("point2Description"),
+    },
+    {
+      icon: ShieldAlert,
+      title: t("point3Title"),
+      description: t("point3Description"),
+    },
+  ];
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -32,13 +31,10 @@ const PainPointsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">Muammolar</span>
+          <span className="text-primary text-sm font-semibold uppercase tracking-wider">{t("badge")}</span>
           <h2 className="font-display text-3xl md:text-4xl font-bold mt-4 mb-6">
-            Tanish muammolar, to'g'rimi?
+            {t("title")} <span className="text-gradient">{t("titleHighlight")}</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Telegram bot yaratishni xohlaysiz, lekin quyidagi to'siqlar oldingizda turadi
-          </p>
         </div>
 
         {/* Pain Points Grid */}
@@ -65,7 +61,7 @@ const PainPointsSection = () => {
         {/* Transition */}
         <div className="text-center mt-16">
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full glass">
-            <span className="text-muted-foreground">Endi bu muammolar hal bo'ladi</span>
+            <span className="text-muted-foreground">{t("solutionBadge")}</span>
             <span className="text-2xl">👇</span>
           </div>
         </div>

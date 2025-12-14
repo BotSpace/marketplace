@@ -1,6 +1,11 @@
+"use client";
+
 import { MousePointer2, Puzzle, RefreshCw } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const ConstructorPowerSection = () => {
+  const t = useTranslations("ConstructorPowerSection");
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background Glow */}
@@ -9,14 +14,13 @@ const ConstructorPowerSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">Konstruktor kuchi</span>
+          <span className="text-primary text-sm font-semibold uppercase tracking-wider">{t("badge")}</span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-            Xuddi LEGO o'ynagandek:{" "}
-            <span className="text-gradient">Barchasi o'z qo'lingizda</span>
+            {t("title")}{" "}
+            <span className="text-gradient">{t("titleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Botdagi tugmalarni o'zgartirish, yangi mahsulot qo'shish yoki aksiya e'lon qilish uchun 
-            dasturchiga yalinish shart emas. Tizimga kiring va bir harakat bilan o'zgartiring.
+            {t("description")}
           </p>
         </div>
 

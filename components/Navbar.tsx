@@ -11,9 +11,11 @@ import { useLinkToParent } from "@/lib/link-to-parrent";
 import { OtpAuthDialog } from "./otp-dialog";
 import Logo from "../public/logo.png";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("Navbar");
 
   const session = useSession();
 
@@ -37,19 +39,19 @@ const Navbar = () => {
               href="/"
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              Asosiy
+              {t("home")}
             </Link>
             <Link
               href="/templates"
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              Shablonlar
+              {t("templates")}
             </Link>
             <Link
               href="/pricing"
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              Narxlar
+              {t("pricing")}
             </Link>
           </div>
 
@@ -60,7 +62,7 @@ const Navbar = () => {
             {session.status === "unauthenticated" ? (
               <OtpAuthDialog>
                 <Button variant="hero" size="default">
-                  Boshlash
+                  {t("signIn")}
                 </Button>
               </OtpAuthDialog>
             ) : (
@@ -110,25 +112,25 @@ const Navbar = () => {
                 href="/"
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
-                Asosiy
+                {t("home")}
               </Link>
               <Link
                 href="/templates"
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
-                Shablonlar
+                {t("templates")}
               </Link>
               <Link
                 href="/pricing"
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
-                Narxlar
+                {t("pricing")}
               </Link>
 
               {session.status === "unauthenticated" ? (
                 <OtpAuthDialog>
                   <Button variant="hero" className="mt-2 w-full">
-                    Boshlash
+                    {t("signIn")}
                   </Button>
                 </OtpAuthDialog>
               ) : (
