@@ -9,6 +9,8 @@ import { useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useLinkToParent } from "@/lib/link-to-parrent";
 import { OtpAuthDialog } from "./otp-dialog";
+import Logo from "../public/logo.png";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,14 +27,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <a href="#" className="group flex items-center gap-2">
-            <div className="bg-gradient-primary shadow-button group-hover:shadow-glow flex h-10 w-10 items-center justify-center rounded-xl transition-shadow duration-300">
-              <Bot className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="font-display text-xl font-bold text-foreground">
-              BotBuilder
-            </span>
-          </a>
+          <Link href="/" className="group flex items-center gap-2">
+            <Image src={Logo} alt="Logo" width={40} height={40} />
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-8 md:flex">

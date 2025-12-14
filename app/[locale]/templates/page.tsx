@@ -8,11 +8,14 @@ import { useEffect, useState } from "react";
 import { useReactQueryAction } from "@/services/use-react-query-action";
 import { Category, Feature, TemplateListType } from "@/types/template";
 import { APIListResponse } from "@/types/http";
+import Pagination from "@/components/pagination";
+import Link from "next/link";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<Category[] | []>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<Feature[] | []>([]);
+  const [page, setPage] = useState(1);
 
   const { data: templates } = useReactQueryAction<
     APIListResponse<TemplateListType[]>
@@ -23,6 +26,7 @@ const Index = () => {
       search: searchQuery,
       features: selectedFeatures.map((item) => item.id),
       categories: selectedCategory.map((item) => item.id),
+      page,
     },
   });
 
@@ -31,16 +35,6 @@ const Index = () => {
       url: "/api/category",
     },
   );
-
-  const { data: feature } = useReactQueryAction<APIListResponse<Category[]>>({
-    url: "/api/feature",
-  });
-
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   useEffect(() => {
     // Enhanced scroll animationsz
@@ -113,7 +107,7 @@ const Index = () => {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           {/* Category Filters */}
-          <div className="overflow-x-auto">
+          <div className="flex gap-2 py-3">
             <Button
               variant={!selectedCategory ? "default" : "outline"}
               size="sm"
@@ -172,13 +166,21 @@ const Index = () => {
           </div>
 
           {/* Templates Grid */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {templates?.data.results.map((template, idx) => (
               <TemplateCard key={idx} data={template} />
             ))}
           </div>
         </div>
       </section>
+
+      {templates && (
+        <Pagination
+          current_page={templates.data.current_page}
+          total_pages={templates.data.total_pages}
+          onPageChange={(e) => setPage(e)}
+        />
+      )}
 
       {/* CTA Section */}
       <section className="border-t border-border/50 bg-muted/30 py-20">
@@ -191,28 +193,15 @@ const Index = () => {
               Shablonlardan birini tanlang va biznesingizni avtomatlashtirishni
               boshlang
             </p>
-            <Button variant="default" size="lg">
-              <Bot className="mr-2 h-5 w-5" />
-              Telegram orqali bog'laning
+            <Button asChild variant="default" size="lg">
+              <Link href={"https://t.me/muhiddin_kabraliev_office"}>
+                <Bot className="mr-2 h-5 w-5" />
+                Telegram orqali bog'laning
+              </Link>
             </Button>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border/50 py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex items-center gap-2 text-xl font-bold">
-              <Bot className="h-6 w-6 text-primary" />
-              <span>BotTemplates</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              © 2024 BotTemplates. Barcha huquqlar himoyalangan.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { ExternalLink, Send } from "lucide-react";
 import {
@@ -26,9 +26,17 @@ import { useRouter } from "next/navigation";
 interface OtpAuthDialogProps {
   logo?: any;
   children: React.ReactNode;
+  redirect_url?: string;
+  onSuccess?: () => void;
 }
 
-export function OtpAuthDialog({ logo, children }: OtpAuthDialogProps) {
+export function OtpAuthDialog({
+  logo,
+  children,
+  redirect_url,
+  onSuccess,
+}: OtpAuthDialogProps) {
+  const [code, setCode] = useState("");
   const [open, setOpen] = useState(false);
   const route = useRouter();
 
@@ -43,24 +51,25 @@ export function OtpAuthDialog({ logo, children }: OtpAuthDialogProps) {
 
       if (res?.ok) {
         toast.success("Hissobga kirdingiz", { id: toastId });
-        route.push("/templates");
+        if (redirect_url) route.push(redirect_url);
+        if (onSuccess) onSuccess();
         setOpen(false);
       } else {
         toast.error("Code xato!", { id: toastId });
       }
     } catch (err) {
-      console.log("🚀 ~ file: otp-dialog.tsx:49 ~ err:", err);
       toast.error("Code xato!", { id: toastId });
     }
   }
 
-  const [code, setCode] = useState("");
+  useEffect(() => {
+    if (code.length >= 6) Login(code);
+  }, [code]);
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
-
-      <AlertDialogContent className="max-w-md">
+      <AlertDialogContent className="w-[90%] max-w-md">
         <AlertDialogHeader className="space-y-3 text-center">
           <div className="flex flex-col items-center gap-2">
             {logo && (

@@ -57,7 +57,7 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="animate-slide-up mx-auto mb-16 max-w-3xl text-center">
-            <h1 className="font-display mb-6 text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 font-display text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
               Biz bilan <span className="text-gradient">bog'laning</span>
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl">
@@ -69,7 +69,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="animate-slide-up space-y-8">
               <div>
-                <h2 className="font-display mb-6 text-2xl font-bold text-foreground">
+                <h2 className="mb-6 font-display text-2xl font-bold text-foreground">
                   Aloqa ma'lumotlari
                 </h2>
                 <p className="mb-8 text-muted-foreground">
@@ -102,7 +102,7 @@ const Contact = () => {
                     <h3 className="mb-1 font-semibold text-foreground">
                       Email
                     </h3>
-                    <p className="text-muted-foreground">info@botbuilder.uz</p>
+                    <p className="text-muted-foreground">info@botspace.uz</p>
                     <p className="mt-1 text-sm text-muted-foreground">
                       24 soat ichida javob beramiz
                     </p>
@@ -146,7 +146,7 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="animate-slide-up delay-200">
               <div className="glass-strong rounded-2xl p-8">
-                <h2 className="font-display mb-6 text-2xl font-bold text-foreground">
+                <h2 className="mb-6 font-display text-2xl font-bold text-foreground">
                   Xabar yuborish
                 </h2>
 
@@ -236,8 +236,6 @@ const Contact = () => {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 };

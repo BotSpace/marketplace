@@ -2,79 +2,18 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Play,
-  Eye,
-  Heart,
-  ArrowLeft,
-  Check,
-  Sparkles,
-  ShoppingCart,
-} from "lucide-react";
+import { Play, Eye, ArrowLeft, Sparkles, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useReactQueryAction } from "@/services/use-react-query-action";
 import { TemplateDetailType } from "@/types/template";
 import { APIDetailCreateResponse } from "@/types/http";
-
-// Mock data - in real app this would come from API
-const templateData = {
-  id: 1,
-  name: "Go'zallik saloni boti",
-  slug: "gozalik_saloni_bot",
-  image: "https://api.botmother.uz/resources/media/template/hq720.avif",
-  video:
-    "https://api.botmother.uz/resources/media/template-video/Telegram_bot_to_generate_text_to_video_reels_tech_ai.mp4",
-  short_description:
-    "<div>The perfect starting point for your projects in the field of well-being, health and personal care. It transmits peace and serenity thanks to a combination of colors, animations and a carefully crafted design.</div>",
-  description:
-    "<h2>About this Template</h2><p>This modern, versatile Framer template has been specifically designed for wellness-focused brands and businesses. It seamlessly combines beautiful design with all the essential features needed to showcase your products and services.Whether you're promoting natural products, vegan cosmetics, or luxury items, this template is built with optimization at its core. It prioritizes both user experience and conversion, perfect for entrepreneurs and businesses committed to holistic health, emotional well-being, holistic therapies, and healthy lifestyles. It's an excellent choice for entrepreneurs, life coaches, therapists, wellness practitioners, alternative medicine practitioners, and businesses promoting natural products, vegan cosmetics, or luxury items.</p>",
-  price: 0.0,
-  views: 250,
-  likes: 48,
-  original_price: "500000.00",
-  discount: "100.00",
-  discount_type: "percent",
-  categories: [
-    { id: 1, name: "Catalog" },
-    { id: 2, name: "Yetkazib berish" },
-    { id: 3, name: "Shaxsiy brend" },
-  ],
-  features: [
-    {
-      id: 1,
-      name: "🍽 @RestoranBot – Sizning shaxsiy ofitsiantingiz!",
-      value:
-        "<div>📲 Buyurtmalarni onlayn qabul qiladi, menyuni ko'rsatadi va aksiyalar haqida xabardor qiladi!</div>",
-    },
-    {
-      id: 2,
-      name: "⭐️ Botning asosiy funksiyalari",
-      value:
-        "<div>🥗 <strong>🧾 Menyu ko'rish</strong><br> — Barcha taomlar bo'limlarga ajratilgan holda:<br> 🍕 Pitsa<br> 🍔 Fast-food<br> 🥗 Salatlar<br> 🍰 Desertlar<br> 🫖 Ichimliklar</div>",
-    },
-    {
-      id: 3,
-      name: "🛒 📦 Buyurtma berish",
-      value:
-        "<div>— Taomni tanlash → miqdorini belgilash → manzilni kiritish → tasdiqlash!<br> — 🏃‍♂️ <em>Tez yetkazib berish xizmati qo'llab-quvvatlanadi.</em></div>",
-    },
-    {
-      id: 4,
-      name: "📍 📌 Yetkazib berish manzilini belgilash",
-      value:
-        "<p>— Geolokatsiya yuborish orqali tezkor manzil aniqlash.<br> — Xarita orqali aniqlik kiritish 📍🗺️</p><div><br></div>",
-    },
-  ],
-};
+import { OtpAuthDialog } from "@/components/otp-dialog";
+import { useLinkToParent } from "@/lib/link-to-parrent";
 
 const TemplateDetail = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-
-  const template = templateData;
 
   const formatPrice = (price: string) => {
     return new Intl.NumberFormat("uz-UZ").format(parseFloat(price));
@@ -84,6 +23,10 @@ const TemplateDetail = () => {
     APIDetailCreateResponse<TemplateDetailType>
   >({
     url: "/api/template/[id]",
+  });
+
+  const { handleClick: redirectBugPage } = useLinkToParent({
+    href: "/templates?show=true&template_id=" + data?.data.id,
   });
 
   if (data)
@@ -108,7 +51,7 @@ const TemplateDetail = () => {
                 <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-muted">
                   {isVideoPlaying ? (
                     <video
-                      src={template.video}
+                      src={data.data.video}
                       className="h-full w-full object-cover"
                       controls
                       autoPlay
@@ -138,15 +81,6 @@ const TemplateDetail = () => {
                     <Eye className="h-4 w-4" />
                     <span>{data.data.views} ko'rildi</span>
                   </div>
-                  <button
-                    onClick={() => setIsLiked(!isLiked)}
-                    className={`flex items-center gap-2 transition-colors ${isLiked ? "text-red-500" : "hover:text-red-500"}`}
-                  >
-                    <Heart
-                      className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`}
-                    />
-                    <span>{template.likes + (isLiked ? 1 : 0)} yoqdi</span>
-                  </button>
                 </div>
               </div>
 
@@ -179,13 +113,15 @@ const TemplateDetail = () => {
                   <div className="flex items-center gap-4">
                     {data.data.price === 0 ? (
                       <>
-                        <span className="text-3xl font-bold text-primary">
-                          Bepul
-                        </span>
-                        <span className="text-lg text-muted-foreground line-through">
-                          {formatPrice(data.data.original_price)} so'm
-                        </span>
-                        <Badge className="border-green-500/20 bg-green-500/10 text-green-500">
+                        <div className="flex flex-col">
+                          <span className="text-3xl font-bold text-primary">
+                            Bepul
+                          </span>
+                          <span className="text-lg text-muted-foreground line-through">
+                            {formatPrice(data.data.original_price)} so'm
+                          </span>
+                        </div>
+                        <Badge className="border-green-500/20 bg-green-500/10 text-green-500 hover:text-white">
                           {data.data.discount}% chegirma
                         </Badge>
                       </>
@@ -197,66 +133,39 @@ const TemplateDetail = () => {
                   </div>
 
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <Button size="lg" className="flex-1 gap-2">
-                      <ShoppingCart className="h-5 w-5" />
-                      Hoziroq olish
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="flex-1 gap-2"
-                    >
+                    <OtpAuthDialog onSuccess={redirectBugPage}>
+                      <Button size="lg">
+                        <ShoppingCart className="h-5 w-5" />
+                        Hoziroq olish
+                      </Button>
+                    </OtpAuthDialog>
+                    <Button size="lg" variant="outline">
                       <Sparkles className="h-5 w-5" />
                       Demo ko'rish
                     </Button>
                   </div>
                 </div>
-
-                {/* Features List */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-foreground">
-                    Xususiyatlari
-                  </h3>
-                  <div className="space-y-3">
-                    {data.data.features.map((feature) => (
-                      <div
-                        key={feature.id}
-                        className="rounded-xl border border-border bg-muted/30 p-4 transition-colors hover:border-primary/30"
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-                            <Check className="h-3.5 w-3.5 text-primary" />
-                          </div>
-                          <div>
-                            <h4 className="mb-1 font-medium text-foreground">
-                              {feature.name}
-                            </h4>
-                            <div
-                              className="text-sm text-muted-foreground"
-                              dangerouslySetInnerHTML={{
-                                __html: feature.name,
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
 
+            {/* Future */}
+            <div className="mt-6">
+              <ul>
+                {data.data.features.map((item) => (
+                  <ol key={item.id}>{item.name}</ol>
+                ))}
+              </ul>
+            </div>
+
             {/* Full Description */}
-            <div className="mt-16 max-w-4xl">
+            <div className="mt-6 max-w-4xl">
               <div
-                className="prose prose-lg max-w-none dark:prose-invert"
+                className="prose prose-lg dark:prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: data.data.description }}
               />
             </div>
           </div>
         </main>
-
-        <Footer />
       </div>
     );
   else return <div className="min-h-screen w-full">Loading ...</div>;

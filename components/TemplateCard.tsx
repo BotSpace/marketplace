@@ -18,7 +18,7 @@ interface TemplateCardProps {
 
 export const TemplateCard = ({ data }: TemplateCardProps) => {
   return (
-    <Card className="group flex h-full flex-col overflow-hidden bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
+    <Card className="group relative flex h-full flex-col overflow-hidden bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
       {/* Template Preview Area */}
       <div className="relative flex aspect-video items-center justify-center overflow-hidden border-b border-border/50 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-20" />
@@ -34,11 +34,11 @@ export const TemplateCard = ({ data }: TemplateCardProps) => {
             <CardDescription className="line-clamp-2 text-sm"></CardDescription>
           </div>
           {data.discount && (
-            <Badge variant="destructive" className="whitespace-nowrap">
+            <span className="absolute top-2 z-50 whitespace-nowrap rounded-2xl bg-yellow-500 px-2 py-1 text-xs font-bold text-white">
               {data.discount_type === "percent"
                 ? `${data.discount}%`
                 : data.discount}
-            </Badge>
+            </span>
           )}
         </div>
 
@@ -72,16 +72,14 @@ export const TemplateCard = ({ data }: TemplateCardProps) => {
             <Eye className="h-4 w-4" />
             <span>{data.views}</span>
           </div>
-          <div className="flex items-center gap-1">
-            <Heart className="h-4 w-4" />
-            <span>{data.likes}</span>
-          </div>
         </div>
 
         {/* Price Row */}
         <div className="flex w-full items-center justify-between">
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold">{data.price}</span>
+          <div className="flex flex-col items-baseline">
+            <span className="text-2xl font-bold">
+              {data.price == "0" ? "Free" : data.price}
+            </span>
             {data.original_price && (
               <span className="text-sm text-muted-foreground line-through">
                 {data.original_price}
