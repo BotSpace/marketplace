@@ -43,7 +43,7 @@ const HeroSection = () => {
             {/* CTA Buttons */}
             <div className="animate-slide-up flex flex-col gap-4 delay-300 sm:flex-row">
               <Button asChild variant="hero" size="xl" className="!text-[#fff]">
-                <Link href={"/templates"}>
+                <Link href={"/website/templates"}>
                   {t("ctaPrimary")}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -117,11 +117,10 @@ const HeroSection = () => {
                         {["Matn", "Rasm", "Tugma", "Menyu"].map((item, i) => (
                           <div
                             key={i}
-                            className={`rounded-lg p-2 text-xs ${
-                              i === 2
+                            className={`rounded-lg p-2 text-xs ${i === 2
                                 ? "animate-drag-demo border border-primary/50 bg-primary/20"
                                 : "bg-muted"
-                            }`}
+                              }`}
                           >
                             {item}
                           </div>
