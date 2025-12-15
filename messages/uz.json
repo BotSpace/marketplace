@@ -50,6 +50,8 @@
     "point2Description": "Dasturlash tilini o'rganish va bot yaratish 3-6 oy vaqt oladi",
     "point3Title": "Texnik xizmat ko'rsatish qiyin",
     "point3Description": "Botni yangilash va xatolarni tuzatish uchun doimiy texnik bilim kerak",
+    "point4Title": "Murakkablik",
+    "point4Description": "Texnik bilim yo'q, kod tushunarsiz — shunchaki qo'rqinchli.",
     "solutionBadge": "Bizning yechim",
     "solutionTitle": "BotMother bilan",
     "solutionHighlight": "hamma narsa oson",

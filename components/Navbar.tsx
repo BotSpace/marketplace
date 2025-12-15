@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Bot, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import Link from "next/link";
@@ -9,9 +9,8 @@ import { useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useLinkToParent } from "@/lib/link-to-parrent";
 import { OtpAuthDialog } from "./otp-dialog";
-import Logo from "../public/logo.png";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { LanguageSection } from "./lang-switcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +29,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="group flex items-center gap-2">
-            <Image src={Logo} alt="Logo" width={40} height={40} />
+            <img src={"/logo.png"} alt="Logo" width={40} height={40} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -58,7 +57,7 @@ const Navbar = () => {
           {/* CTA Button & Theme Toggle */}
           <div className="hidden items-center gap-2 md:flex">
             <ThemeToggle />
-
+            <LanguageSection />
             {session.status === "unauthenticated" ? (
               <OtpAuthDialog>
                 <Button variant="hero" size="default">
@@ -91,6 +90,35 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
+
+            {session.status === "unauthenticated" ? (
+              <OtpAuthDialog>
+                <Button variant="hero" size="default">
+                  {t("signIn")}
+                </Button>
+              </OtpAuthDialog>
+            ) : (
+              session.status === "authenticated" && (
+                <Avatar
+                  onClick={goHomePage}
+                  className="flex h-8 w-8 cursor-pointer items-center justify-center"
+                >
+                  <AvatarImage
+                    className="h-8 w-8 rounded-full"
+                    src={
+                      session.data?.user.avatar ||
+                      "https://github.com/shadcn.png"
+                    }
+                    alt={`${session.data?.user.first_name} ${session.data?.user.last_name}`}
+                  />
+                  <AvatarFallback>
+                    {session.data?.user.first_name?.charAt(0)}
+                    {session.data?.user.last_name?.charAt(0)}
+                  </AvatarFallback>
+                </Avatar>
+              )
+            )}
+
             <button
               className="p-2 text-foreground"
               onClick={() => setIsOpen(!isOpen)}
@@ -126,34 +154,7 @@ const Navbar = () => {
               >
                 {t("pricing")}
               </Link>
-
-              {session.status === "unauthenticated" ? (
-                <OtpAuthDialog>
-                  <Button variant="hero" className="mt-2 w-full">
-                    {t("signIn")}
-                  </Button>
-                </OtpAuthDialog>
-              ) : (
-                session.status === "authenticated" && (
-                  <Avatar
-                    onClick={goHomePage}
-                    className="flex h-8 w-8 cursor-pointer items-center justify-center"
-                  >
-                    <AvatarImage
-                      className="h-8 w-8 rounded-full"
-                      src={
-                        session.data?.user.avatar ||
-                        "https://github.com/shadcn.png"
-                      }
-                      alt={`${session.data?.user.first_name} ${session.data?.user.last_name}`}
-                    />
-                    <AvatarFallback>
-                      {session.data?.user.first_name?.charAt(0)}
-                      {session.data?.user.last_name?.charAt(0)}
-                    </AvatarFallback>
-                  </Avatar>
-                )
-              )}
+              <LanguageSection />
             </div>
           </div>
         )}

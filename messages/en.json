@@ -49,6 +49,8 @@
     "point2Description": "Learning programming and creating bots takes 3-6 months",
     "point3Title": "Maintenance is difficult",
     "point3Description": "Updating bots and fixing bugs requires constant technical knowledge",
+    "point4Title": "Complexity",
+    "point4Description": "No technical knowledge, unreadable code — it's intimidating",
     "solutionBadge": "Our Solution",
     "solutionTitle": "With BotMother",
     "solutionHighlight": "everything is easy",

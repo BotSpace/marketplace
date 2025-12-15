@@ -1,24 +1,26 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Check, Zap, Crown, Rocket } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { useReactQueryAction } from "@/services/use-react-query-action";
 import { APIListResponse } from "@/types/http";
+import { Bot, Check, Crown } from "lucide-react";
+import { formatCurrency } from "@/lib/format-currency";
+import Link from "next/link";
 
 interface Plan {
   id: 0;
   name: "free";
   name_display: "string";
-  price: "73";
-  max_users: 2147483647;
+  price: string;
+  max_users: number;
   powered_by_botmother: true;
   custom_domain: true;
   priority_support: true;
-  description: "string";
+  description: string;
   is_active: true;
-  created_at: "2025-12-13T17:48:42.970Z";
+  created_at: string;
+  is_top: boolean;
 }
 
 const Pricing = () => {
@@ -47,73 +49,91 @@ const Pricing = () => {
             {data?.data.results.map((plan, index) => (
               <div
                 key={plan.name}
-                // className={`animate-slide-up relative rounded-2xl p-8 transition-all duration-300 ${
-                //   plan.popular
-                //     ? "bg-gradient-card shadow-glow scale-105 border-2 border-primary"
-                //     : "glass hover:shadow-card"
-                // }`}
+                className={`animate-slide-up relative rounded-2xl p-8 transition-all duration-300 ${
+                  plan.is_top
+                    ? "bg-gradient-card shadow-glow scale-105 border-2 border-primary"
+                    : "glass hover:shadow-card"
+                }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* {plan.popular && (
+                {plan.is_top && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="bg-gradient-primary rounded-full px-4 py-1 text-sm font-semibold text-primary-foreground">
                       Eng mashhur
                     </span>
                   </div>
-                )} */}
+                )}
 
                 <div className="mb-4 flex items-center gap-3">
-                  {/* <div
+                  <div
                     className={`flex h-12 w-12 items-center justify-center rounded-xl ${
-                      plan.popular
+                      plan.is_top
                         ? "bg-gradient-primary shadow-button"
                         : "bg-secondary"
                     }`}
                   >
-                    <plan.icon
-                      className={`h-6 w-6 ${
-                        plan.popular
-                          ? "text-primary-foreground"
-                          : "text-primary"
-                      }`}
-                    />
-                  </div> */}
+                    {plan.is_top ? (
+                      <Crown className={`h-6 w-6 text-primary`} />
+                    ) : (
+                      <Bot className={`h-6 w-6`} />
+                    )}
+                  </div>
                   <h3 className="font-display text-xl font-bold text-foreground">
-                    {plan.name}
+                    {plan.name_display}
                   </h3>
                 </div>
 
                 <div className="mb-4">
                   <span className="text-4xl font-bold text-foreground">
-                    {plan.price}
+                    {formatCurrency(plan.price, "UZS")}
                   </span>
-                  {/* {plan.period && (
-                    <span className="ml-1 text-muted-foreground">
-                      {plan.period}
-                    </span>
-                  )} */}
+                  {true && (
+                    <span className="ml-1 text-muted-foreground">perion</span>
+                  )}
                 </div>
 
                 <p className="mb-6 text-muted-foreground">{plan.description}</p>
 
-                <ul className="mb-8 space-y-3">
-                  {/* {plan.features.map((feature) => (
+                <ul>
+                  <li className="flex items-center gap-3">
+                    <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <Check className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-foreground">
+                      {plan.max_users} maksimal foydalanuvchilar
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <Check className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-foreground">
+                      {plan.powered_by_botmother
+                        ? "Powered by Botmother"
+                        : "Not powered by Botmother"}
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <Check className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-foreground">
+                      {plan.priority_support
+                        ? "Priority support"
+                        : "No priority support"}
+                    </span>
+                  </li>
+                </ul>
+                {/* <ul className="mb-8 space-y-3">
+                  {plan.fet.map((feature) => (
                     <li key={feature} className="flex items-center gap-3">
                       <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
                         <Check className="h-3 w-3 text-primary" />
                       </div>
                       <span className="text-foreground">{feature}</span>
                     </li>
-                  ))} */}
-                </ul>
-
-                <Button
-                  // variant={plan.buttonVariant}
-                  className="w-full"
-                  size="lg"
-                >
-                  {/* {plan.buttonText} */}
-                </Button>
+                  ))}
+                </ul> */}
               </div>
             ))}
           </div>
@@ -166,8 +186,8 @@ const Pricing = () => {
                 Bepul demo olish uchun biz bilan bog'laning. Barcha
                 savollaringizga javob beramiz.
               </p>
-              <Button variant="hero" size="lg">
-                Tekinga ishlatib ko'rish
+              <Button asChild variant="hero" size="lg">
+                <Link href="/templates">Tekinga ishlatib ko'rish</Link>
               </Button>
             </div>
           </div>

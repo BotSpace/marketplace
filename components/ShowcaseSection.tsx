@@ -1,5 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Edit3, ShoppingCart, Calendar, Pizza, Briefcase, Heart } from "lucide-react";
+import {
+  Edit3,
+  ShoppingCart,
+  Calendar,
+  Pizza,
+  Briefcase,
+  Heart,
+  ArrowRight,
+} from "lucide-react";
+import Link from "next/link";
 
 const templates = [
   {
@@ -41,70 +50,92 @@ const templates = [
 
 const ShowcaseSection = () => {
   return (
-    <section id="templates" className="py-24 relative overflow-hidden">
+    <section id="templates" className="relative overflow-hidden py-24">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-      
-      <div className="container mx-auto px-4 relative z-10">
+
+      <div className="container relative z-10 mx-auto px-4">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">Shablonlar</span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold mt-4 mb-6">
+        <div className="mx-auto mb-16 max-w-2xl text-center">
+          <span className="text-sm font-semibold uppercase tracking-wider text-primary">
+            Shablonlar
+          </span>
+          <h2 className="mb-6 mt-4 font-display text-3xl font-bold md:text-4xl">
             Noldan boshlashga erinasizmi?{" "}
             <span className="text-gradient">Tayyorini oling</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Bizda 50+ tayyor shablonlar bor. Ularni 100% o'zingizga moslab o'zgartirishingiz mumkin. 
-            Ranglar, matnlar, rasmlar — hammasi o'zgaradi.
+          <p className="text-lg text-muted-foreground">
+            Bizda 50+ tayyor shablonlar bor. Ularni 100% o'zingizga moslab
+            o'zgartirishingiz mumkin. Ranglar, matnlar, rasmlar — hammasi
+            o'zgaradi.
           </p>
         </div>
 
         {/* Templates Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
           {templates.map((template, index) => (
             <div
               key={index}
-              className="group relative p-6 rounded-2xl bg-gradient-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-card hover:-translate-y-1"
+              className="bg-gradient-card group relative rounded-2xl border border-border p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-card"
             >
               {/* Popular Badge */}
               {template.popular && (
-                <div className="absolute -top-3 right-4 px-3 py-1 rounded-full bg-gradient-primary text-primary-foreground text-xs font-semibold">
+                <div className="bg-gradient-primary absolute -top-3 right-4 rounded-full px-3 py-1 text-xs font-semibold text-primary-foreground">
                   Mashhur
                 </div>
               )}
 
               {/* Icon */}
-              <div className={`w-14 h-14 rounded-xl ${template.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <template.icon className="w-7 h-7" />
+              <div
+                className={`h-14 w-14 rounded-xl ${template.color} mb-4 flex items-center justify-center transition-transform group-hover:scale-110`}
+              >
+                <template.icon className="h-7 w-7" />
               </div>
 
               {/* Content */}
-              <h3 className="font-display text-lg font-semibold mb-2">{template.title}</h3>
-              <p className="text-muted-foreground text-sm mb-4">{template.description}</p>
+              <h3 className="mb-2 font-display text-lg font-semibold">
+                {template.title}
+              </h3>
+              <p className="mb-4 text-sm text-muted-foreground">
+                {template.description}
+              </p>
 
               {/* Edit Button */}
-              <Button variant="ghost" size="sm" className="group/btn text-primary hover:text-primary">
-                <Edit3 className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
-                Shablonni tahrirlash
+              <Button
+                variant="ghost"
+                size="sm"
+                className="group/btn text-primary hover:text-primary"
+                asChild
+              >
+                <Link href={"/templates"}>
+                  Ko'proq
+                  <ArrowRight className="" />
+                </Link>
               </Button>
             </div>
           ))}
 
           {/* More Templates Card */}
-          <div className="p-6 rounded-2xl border-2 border-dashed border-border hover:border-primary/50 transition-colors flex flex-col items-center justify-center text-center min-h-[200px]">
-            <div className="font-display text-4xl font-bold text-gradient mb-2">45+</div>
-            <div className="text-muted-foreground text-sm mb-4">Boshqa shablonlar</div>
-            <Button variant="outline" size="sm">
-              Hammasini ko'rish
+          <div className="flex min-h-[200px] flex-col items-center justify-center rounded-2xl border-2 border-dashed border-border p-6 text-center transition-colors hover:border-primary/50">
+            <div className="text-gradient mb-2 font-display text-4xl font-bold">
+              45+
+            </div>
+            <div className="mb-4 text-sm text-muted-foreground">
+              Boshqa shablonlar
+            </div>
+            <Button variant="outline" size="sm" asChild>
+              <Link href={"/templates"}>Hammasini ko'rish</Link>
             </Button>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button variant="hero" size="lg" className="group">
-            Shablonlarni ko'rish
-            <Edit3 className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+        <div className="mt-12 text-center">
+          <Button asChild variant="hero" size="lg" className="group">
+            <Link href={"/templates"}>
+              Shablonlarni ko'rish
+              <Edit3 className="h-4 w-4 transition-transform group-hover:rotate-12" />
+            </Link>
           </Button>
         </div>
       </div>

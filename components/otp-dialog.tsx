@@ -105,6 +105,7 @@ export function OtpAuthDialog({
           {/* Telegram button */}
           <a
             className={buttonVariants({
+              variant: "hero",
               className: "flex w-full gap-2",
             })}
             href="https://t.me/botmother_authbot"
@@ -150,6 +151,7 @@ export function OtpAuthDialog({
             onClick={() => Login(code)}
             disabled={code.length < 6}
             className="flex-1"
+            variant={"hero"}
           >
             <Send className="mr-2 h-4 w-4" />
             Yuborish

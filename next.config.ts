@@ -20,62 +20,62 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Optimize fonts
   optimizeFonts: true,
-  async headers() {
-    return [
-      {
-        // Cache images for 1 year
-        source: "/:path*.(jpg|jpeg|png|gif|webp|svg|ico|avif)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        // Cache static assets (JS, CSS) for 1 year
-        source: "/_next/static/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        // Cache other static files
-        source: "/:path*.(js|css|woff|woff2|ttf|eot)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        // Security headers
-        source: "/:path*",
-        headers: [
-          {
-            key: "X-DNS-Prefetch-Control",
-            value: "on",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
-          },
-        ],
-      },
-    ];
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       // Cache images for 1 year
+  //       source: "/:path*.(jpg|jpeg|png|gif|webp|svg|ico|avif)",
+  //       headers: [
+  //         {
+  //           key: "Cache-Control",
+  //           value: "public, max-age=31536000, immutable",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       // Cache static assets (JS, CSS) for 1 year
+  //       source: "/_next/static/:path*",
+  //       headers: [
+  //         {
+  //           key: "Cache-Control",
+  //           value: "public, max-age=31536000, immutable",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       // Cache other static files
+  //       source: "/:path*.(js|css|woff|woff2|ttf|eot)",
+  //       headers: [
+  //         {
+  //           key: "Cache-Control",
+  //           value: "public, max-age=31536000, immutable",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       // Security headers
+  //       source: "/:path*",
+  //       headers: [
+  //         {
+  //           key: "X-DNS-Prefetch-Control",
+  //           value: "on",
+  //         },
+  //         {
+  //           key: "X-Frame-Options",
+  //           value: "SAMEORIGIN",
+  //         },
+  //         {
+  //           key: "X-Content-Type-Options",
+  //           value: "nosniff",
+  //         },
+  //         {
+  //           key: "Referrer-Policy",
+  //           value: "strict-origin-when-cross-origin",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
 };
 
 const withNextIntl = createNextIntlPlugin();

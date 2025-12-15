@@ -11,9 +11,14 @@ import { TemplateDetailType } from "@/types/template";
 import { APIDetailCreateResponse } from "@/types/http";
 import { OtpAuthDialog } from "@/components/otp-dialog";
 import { useLinkToParent } from "@/lib/link-to-parrent";
+import { useSession } from "next-auth/react";
+import { instanceAuth } from "@/services/instance";
+import toast from "react-hot-toast";
 
 const TemplateDetail = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const session = useSession();
 
   const formatPrice = (price: string) => {
     return new Intl.NumberFormat("uz-UZ").format(parseFloat(price));
@@ -28,6 +33,24 @@ const TemplateDetail = () => {
   const { handleClick: redirectBugPage } = useLinkToParent({
     href: "/templates?show=true&template_id=" + data?.data.id,
   });
+
+  function handleBuyTemplate() {
+    const toastId = toast.loading("Buy template...");
+
+    instanceAuth
+      .post("/order/", {
+        template: data?.data.id,
+      })
+      .then((response) => {
+        redirectBugPage();
+        toast.success("Template bought successfully!", { id: toastId });
+        console.log("Order created:", response.data);
+      })
+      .catch((error) => {
+        toast.success("Error creating order", { id: toastId });
+        console.error("Error creating order:", error);
+      });
+  }
 
   if (data)
     return (
@@ -52,7 +75,7 @@ const TemplateDetail = () => {
                   {isVideoPlaying ? (
                     <video
                       src={data.data.video}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-contain"
                       controls
                       autoPlay
                     />
@@ -65,10 +88,13 @@ const TemplateDetail = () => {
                       />
                       <button
                         onClick={() => setIsVideoPlaying(true)}
-                        className="group absolute inset-0 flex items-center justify-center bg-black/30 transition-colors hover:bg-black/40"
+                        className="group absolute inset-0 flex items-center justify-center bg-black/30 text-white transition-colors hover:bg-black/40"
                       >
                         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary transition-transform group-hover:scale-110">
-                          <Play className="ml-1 h-6 w-6 text-primary-foreground" />
+                          <Play
+                            color="#fff"
+                            className="ml-1 h-6 w-6 text-primary-foreground"
+                          />
                         </div>
                       </button>
                     </>
@@ -133,12 +159,23 @@ const TemplateDetail = () => {
                   </div>
 
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <OtpAuthDialog onSuccess={redirectBugPage}>
-                      <Button size="lg">
+                    {session.status === "unauthenticated" ? (
+                      <OtpAuthDialog onSuccess={redirectBugPage}>
+                        <Button variant={"hero"} size="lg">
+                          <ShoppingCart className="h-5 w-5" />
+                          Hoziroq olish
+                        </Button>
+                      </OtpAuthDialog>
+                    ) : (
+                      <Button
+                        onClick={handleBuyTemplate}
+                        variant={"hero"}
+                        size="lg"
+                      >
                         <ShoppingCart className="h-5 w-5" />
                         Hoziroq olish
                       </Button>
-                    </OtpAuthDialog>
+                    )}
                     <Button size="lg" variant="outline">
                       <Sparkles className="h-5 w-5" />
                       Demo ko'rish

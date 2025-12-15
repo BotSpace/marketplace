@@ -87,10 +87,12 @@ export const TemplateCard = ({ data }: TemplateCardProps) => {
             )}
             <span className="text-xs text-muted-foreground">bir marta</span>
           </div>
-          <Link href={`/templates/${data.slug}`} className={buttonVariants()}>
-            Ko'rish
-            <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
+          <Button asChild variant={"hero"}>
+            <Link href={`/templates/${data.slug}`}>
+              Ko'rish
+              <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </Button>
         </div>
       </CardFooter>
     </Card>

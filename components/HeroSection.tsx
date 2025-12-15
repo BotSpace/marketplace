@@ -1,12 +1,21 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/routing";
+import { useLinkToParent } from "@/lib/link-to-parrent";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import { OtpAuthDialog } from "./otp-dialog";
 
 const HeroSection = () => {
+  const session = useSession();
   const t = useTranslations("HeroSection");
+
+  const { handleClick: goConstructor } = useLinkToParent({
+    href: "/",
+    onClick: (e) => console.log("Clicked!"),
+  });
+
   return (
     <section className="bg-gradient-hero relative min-h-screen overflow-hidden pb-16 pt-24">
       {/* Background Effects */}
@@ -36,18 +45,32 @@ const HeroSection = () => {
             {/* Paragraph */}
             <p className="animate-slide-up max-w-xl text-sm text-muted-foreground delay-200 md:text-xl">
               {t("description")}{" "}
-              <span className="font-semibold text-foreground">{t("descriptionHighlight")}</span>{" "}
+              <span className="font-semibold text-foreground">
+                {t("descriptionHighlight")}
+              </span>{" "}
               {t("descriptionEnd")}
             </p>
 
             {/* CTA Buttons */}
             <div className="animate-slide-up flex flex-col gap-4 delay-300 sm:flex-row">
-              <Button asChild variant="hero" size="xl" className="!text-[#fff]">
-                <Link href={"/website/templates"}>
+              {session.status !== "authenticated" ? (
+                <OtpAuthDialog onSuccess={goConstructor}>
+                  <Button variant="hero" size="xl" className="!text-[#fff]">
+                    {t("ctaPrimary")}
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </OtpAuthDialog>
+              ) : (
+                <Button
+                  onClick={goConstructor}
+                  variant="hero"
+                  size="xl"
+                  className="!text-[#fff]"
+                >
                   {t("ctaPrimary")}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+                </Button>
+              )}
               <Button variant="glass" size="xl" className="group">
                 <Play className="h-5 w-5 text-primary" />
                 {t("ctaSecondary")}
@@ -117,10 +140,11 @@ const HeroSection = () => {
                         {["Matn", "Rasm", "Tugma", "Menyu"].map((item, i) => (
                           <div
                             key={i}
-                            className={`rounded-lg p-2 text-xs ${i === 2
+                            className={`rounded-lg p-2 text-xs ${
+                              i === 2
                                 ? "animate-drag-demo border border-primary/50 bg-primary/20"
                                 : "bg-muted"
-                              }`}
+                            }`}
                           >
                             {item}
                           </div>

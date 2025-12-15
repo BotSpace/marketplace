@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="mb-4 flex items-center gap-2">
-              <Image src={Logo} alt="Logo" width={40} height={40} />
+              <img src={"/logo.png"} alt="Logo" width={40} height={40} />
             </Link>
             <p className="mb-4 max-w-sm text-sm text-muted-foreground">
               Telegram botlarini kod yozmasdan, vizual konstruktor yordamida
