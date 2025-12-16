@@ -1,16 +1,26 @@
+# Build Stage
+FROM node:24 AS builder
+WORKDIR /app
+
+RUN npm i -g pnpm
+
+COPY package*.json ./
+RUN pnpm install
+
+COPY . .
+
+RUN pnpm run build
+
 # Production Stage
 FROM node:24 AS runner
 WORKDIR /app
 ENV NODE_ENV=production
+RUN npm i -g pnpm
 
-RUN apt update && apt install -y curl \
-    && npm install -g pnpm  # Install pnpm in the production stage
+RUN apt update && apt install curl
 
-# Copy built application and node modules from the builder stage
 COPY --from=builder /app ./
 
-# Expose port (default for Next.js)
 EXPOSE 3000
 
-# Start the Next.js application
 CMD ["pnpm", "start"]
