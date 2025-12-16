@@ -1,23 +1,10 @@
-# Build Stage
-FROM node:24 AS builder
-WORKDIR /app
-
-RUN npm i -g pnpm
-
-# Install dependencies
-COPY package*.json ./
-RUN pnpm install
-
-# Copy project files and build Next.js application
-COPY . .
-RUN pnpm run build
-
 # Production Stage
 FROM node:24 AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
-RUN apt update && apt install curl
+RUN apt update && apt install -y curl \
+    && npm install -g pnpm  # Install pnpm in the production stage
 
 # Copy built application and node modules from the builder stage
 COPY --from=builder /app ./
