@@ -2,17 +2,15 @@
 FROM node:24 AS builder
 WORKDIR /app
 
-# Install dependencies
 COPY . ./
-RUN npm install
+RUN npm i -g pnpm
+RUN pnpm install
 
 ENV NODE_ENV=devlopment
 
 RUN apt update && apt install curl
 
-# Expose port (default for Next.js)
 EXPOSE 3000
 
-# Start the Next.js application
-CMD ["npm", "start"]
+CMD ["pnpm", "dev"]
 
