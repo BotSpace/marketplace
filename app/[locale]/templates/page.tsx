@@ -107,7 +107,7 @@ const Index = () => {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           {/* Category Filters */}
-          <div className="flex gap-2 py-3">
+          <div className="flex gap-2 py-3 flex-wrap">
             <Button
               variant={!selectedCategory ? "default" : "outline"}
               size="sm"

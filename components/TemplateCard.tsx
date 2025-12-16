@@ -34,7 +34,7 @@ export const TemplateCard = ({ data }: TemplateCardProps) => {
             <CardDescription className="line-clamp-2 text-sm"></CardDescription>
           </div>
           {data.discount && (
-            <span className="absolute top-2 z-50 whitespace-nowrap rounded-2xl bg-yellow-500 px-2 py-1 text-xs font-bold text-white">
+            <span className="absolute top-2 z-30 whitespace-nowrap rounded-2xl bg-yellow-500 px-2 py-1 text-xs font-bold text-white">
               {data.discount_type === "percent"
                 ? `${data.discount}%`
                 : data.discount}
