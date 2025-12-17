@@ -38,4 +38,5 @@ export interface TemplateDetailType {
   discount_type: string;
   categories: Category[];
   features: Feature[];
+  is_order: boolean;
 }

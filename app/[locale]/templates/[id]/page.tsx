@@ -173,7 +173,9 @@ const TemplateDetail = () => {
                         size="lg"
                       >
                         <ShoppingCart className="h-5 w-5" />
-                        Hoziroq olish
+                        {
+                          data.data?.is_order ? "Sotib olingan" : "Hoziroq olish"
+                        }
                       </Button>
                     )}
                     <Button size="lg" variant="outline">
