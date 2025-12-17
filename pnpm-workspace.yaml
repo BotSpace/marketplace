@@ -1,6 +1,3 @@
-# minimumReleaseAgeExclude:
-#   - "@hookform/resolvers"
-
 # minimumReleaseAge ni millisekundlarda belgilash
 minimumReleaseAge: 131400
 
