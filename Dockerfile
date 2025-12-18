@@ -11,7 +11,10 @@ COPY . .
 
 RUN pnpm run build
 
-# Production Stage
+
+
+
+
 FROM node:24 AS runner
 WORKDIR /app
 ENV NODE_ENV=production
