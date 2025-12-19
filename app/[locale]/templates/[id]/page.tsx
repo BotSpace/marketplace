@@ -179,12 +179,12 @@ const TemplateDetail = () => {
                       </Button>
                     )}
                     {data.data.demo_url &&
-                      <button asChild size="lg" variant="outline">
+                      <Button asChild size="lg" variant="outline">
                         <a href={data.data.demo_url} target="_blank">
                           <Sparkles className="h-5 w-5" />
                           demo ko'rish
                         </a>
-                      </button>
+                      </Button>
                     }
                   </div>
                 </div>
