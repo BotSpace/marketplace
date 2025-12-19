@@ -178,10 +178,14 @@ const TemplateDetail = () => {
                         }
                       </Button>
                     )}
-                    <Button size="lg" variant="outline">
-                      <Sparkles className="h-5 w-5" />
-                      Demo ko'rish
-                    </Button>
+                    {data.data.demo_url &&
+                      <button asChild size="lg" variant="outline">
+                        <a href={data.data.demo_url} target="_blank">
+                          <Sparkles className="h-5 w-5" />
+                          demo ko'rish
+                        </a>
+                      </button>
+                    }
                   </div>
                 </div>
               </div>

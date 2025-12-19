@@ -39,4 +39,5 @@ export interface TemplateDetailType {
   categories: Category[];
   features: Feature[];
   is_order: boolean;
+  demo_url?: string
 }
