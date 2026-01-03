@@ -13,7 +13,7 @@ import {
 import { useTransition } from "react";
 import { useLocale } from "next-intl";
 import { usePathname } from "@/i18n/routing";
-import { useRouter } from "@/i18n/routing";
+import { useRouter } from "next/navigation";
 
 const languages = [
   { value: "uz", label: "O'zbek" },
@@ -34,18 +34,12 @@ export function LanguageSection() {
   const handleLanguageChange = (lang: string) => {
     // Agar tanlangan til hozirgisi bilan bir xil bo'lsa, to'xtatamiz
     if (lang === currentLocale) return;
-
     const langId = toast.loading("Til o'zgarishi...");
-
-    // TODO: Toast bilan bildirishnoma qo'shish mumkin
-    startTransition(() => {
-      router.replace(pathname, { locale: lang });
-    });
-
     if (window) {
-      toast.success("Til muvaffaqiyatli o'zgartirildi!", { id: langId });
-      window.location.href = pathname;
+      const targetUrl = `/${lang}${pathname}`;
+      window.location.href = targetUrl;
     }
+    toast.success("Til muvaffaqiyatli o'zgartirildi!", { id: langId });
   };
 
   return (
