@@ -32,7 +32,7 @@ const Index = () => {
 
   const { data: categories } = useReactQueryAction<APIListResponse<Category[]>>(
     {
-      url: "/api/category",
+      url: "/api/template/category",
     },
   );
 
@@ -112,11 +112,10 @@ const Index = () => {
               variant={!selectedCategory ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedCategory([])}
-              className={`rounded-full transition-all ${
-                !selectedCategory
+              className={`rounded-full transition-all ${!selectedCategory
                   ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
                   : "hover:border-primary/50"
-              }`}
+                }`}
             >
               <X />
               Tozalash
@@ -144,11 +143,10 @@ const Index = () => {
                         ]);
                       }
                     }}
-                    className={`rounded-full transition-all ${
-                      isSelected
+                    className={`rounded-full transition-all ${isSelected
                         ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
                         : "hover:border-primary/50"
-                    }`}
+                      }`}
                   >
                     {name}
                   </Button>
