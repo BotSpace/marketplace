@@ -20,7 +20,7 @@ const Index = () => {
   const { data: templates } = useReactQueryAction<
     APIListResponse<TemplateListType[]>
   >({
-    url: "/api/template/list",
+    url: "/api/template",
     debounceTime: 400,
     query: {
       search: searchQuery,
@@ -32,7 +32,7 @@ const Index = () => {
 
   const { data: categories } = useReactQueryAction<APIListResponse<Category[]>>(
     {
-      url: "/api/category",
+      url: "/api/template/category",
     },
   );
 
