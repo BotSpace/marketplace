@@ -27,7 +27,7 @@ const TemplateDetail = () => {
   const { data } = useReactQueryAction<
     APIDetailCreateResponse<TemplateDetailType>
   >({
-    url: "/api/template/[id]",
+    url: "/api/template/list/[id]",
   });
 
   const { handleClick: redirectBugPage } = useLinkToParent({

@@ -20,7 +20,7 @@ const Index = () => {
   const { data: templates } = useReactQueryAction<
     APIListResponse<TemplateListType[]>
   >({
-    url: "/api/template",
+    url: "/api/template/list",
     debounceTime: 400,
     query: {
       search: searchQuery,
@@ -32,7 +32,7 @@ const Index = () => {
 
   const { data: categories } = useReactQueryAction<APIListResponse<Category[]>>(
     {
-      url: "/api/template/category",
+      url: "/api/category",
     },
   );
 
@@ -113,8 +113,8 @@ const Index = () => {
               size="sm"
               onClick={() => setSelectedCategory([])}
               className={`rounded-full transition-all ${!selectedCategory
-                  ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-                  : "hover:border-primary/50"
+                ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
+                : "hover:border-primary/50"
                 }`}
             >
               <X />
@@ -144,8 +144,8 @@ const Index = () => {
                       }
                     }}
                     className={`rounded-full transition-all ${isSelected
-                        ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-                        : "hover:border-primary/50"
+                      ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
+                      : "hover:border-primary/50"
                       }`}
                   >
                     {name}
