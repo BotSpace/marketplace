@@ -38,7 +38,7 @@ const TemplateDetail = () => {
     const toastId = toast.loading("Buy template...");
 
     instanceAuth
-      .post("/order/", {
+      .post("/template/order/", {
         template: data?.data.id,
       })
       .then((response) => {
