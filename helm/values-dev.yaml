@@ -1,0 +1,12 @@
+image:
+  tag: "2.0.7-dev"
+
+service:
+  nodePort: 31003
+
+configMaps:
+  config:
+    DEBUG: "true"
+    NEXT_PUBLIC_API: "https://api-dev.botspace.uz/api"
+    CONSTRUCTOR_URL: "http://constructor:3000"
+    NEXTAUTH_SECRET: "change-me"

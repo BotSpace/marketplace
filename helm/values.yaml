@@ -1,0 +1,79 @@
+fullnameOverride: "market"
+
+image:
+  repository: registry.jscorp.uz/botmother-market
+  tag: "2.0.7-prod"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: botmother-registry
+
+replicaCount: 1
+
+service:
+  enabled: true
+  type: NodePort
+  port: 3000
+  targetPort: 3000
+  nodePort: 30003
+
+configMaps:
+  config:
+    DEBUG: "true"
+    NEXT_PUBLIC_API: "https://api.botspace.uz/api"
+    CONSTRUCTOR_URL: "http://constructor:3000"
+    NEXTAUTH_SECRET: "change-me"
+
+# TELEGRAM_BOT_TOKEN is kept in the 'bot' secret below, not in configmap
+secrets:
+  bot:
+    envFrom: true
+    stringData:
+      TELEGRAM_BOT_TOKEN: "change-me"
+
+probes:
+  startup:
+    enabled: true
+    type: tcpSocket
+    tcpSocket:
+      port: 3000
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 12
+  readiness:
+    enabled: true
+    type: tcpSocket
+    tcpSocket:
+      port: 3000
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 3
+    failureThreshold: 3
+  liveness:
+    enabled: true
+    type: tcpSocket
+    tcpSocket:
+      port: 3000
+    initialDelaySeconds: 15
+    periodSeconds: 15
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+resources:
+  requests:
+    cpu: "1000m"
+    memory: "1Gi"
+  limits:
+    cpu: "3000m"
+    memory: "3Gi"
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: NotIn
+              values:
+                - base
