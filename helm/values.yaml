@@ -2,7 +2,7 @@ fullnameOverride: "market"
 
 image:
   repository: registry.jscorp.uz/botmother-market
-  tag: "2.0.7-prod"
+  tag: "aa276f5"
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
